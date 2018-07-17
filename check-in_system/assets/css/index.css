@@ -1,0 +1,240 @@
+.container-fluid{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.row{
+	margin-right:0px!important;
+	margin-left:0px!important;
+}
+.quitar_padding{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+#imagen_header_logo{
+	width: 100%;
+	margin: 30px auto 30px auto;
+}
+.espacio_secciones{
+	margin: 50px auto;
+}
+.text_medium{
+	font-family: 'FoundrySterling-Medium';
+}
+.text_bold{
+	font-family: 'FoundrySterling-BoldOSF';
+}
+.text_book{
+	font-family: 'FoundrySterling-Book';
+}
+.p_texto_morado{
+	font-size: 27px;
+	color: #3a1266;
+}
+.mayuscula{
+	text-transform: uppercase;
+}
+.justificar{
+	text-align: justify;
+}
+.centrar{
+	text-align: center;
+}
+#background_morado{
+	background-color: #3a1266;
+}
+#div_titulo{
+	text-align: center;
+	margin-bottom: 25px;
+}
+#h1_titulo{
+	font-family: 'FoundrySterling-BoldOSF';
+	color: white;
+}
+#div_imagen_agenda{
+	margin: 55px auto;
+}
+#div_contenedor_agenda{
+	margin: 35px auto;
+}
+#background_gris{
+	background-color: #dfdfdf;
+}
+.p_texto_negro{
+	font-size: 27px;
+	color: #565656;
+}
+#div_parrafo_seccion_video{
+	margin: 75px auto;
+}
+#div_contenedor_video{
+	margin: 55px auto;
+	width: 90%;
+}
+#background_carrousel{
+	background-image: url("../images/background_carrousel.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+#div_contenedor_carrousel{
+	margin: 50px auto;
+}
+.carousel{
+	background-color: rgba(242, 243, 244, 0);
+}
+.carousel-control{
+	background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.0) 100%) !important;
+}
+.background_azul{
+	background-color: #3961a6;
+}
+#rosa{
+	color: #ea008a;
+}
+#div_contenedor_texto_derecho_formulario{
+	margin-top: 40%;
+}
+#div_contenedor_formulario{
+	margin: 55px auto 20px auto;
+}
+.input-form{
+	color: black;
+	background-color: #fff;
+	border-radius: 13px;
+	font-family: 'FoundrySterling-Book', Sans-Serif;
+	font-size: 14pt;
+	margin: 10px auto;
+	height: 40px;
+	max-width: 400px;
+}
+.center-button{
+	text-align: center;
+}
+.button-form{
+	color: #480659;
+	background-color: #19a9f3;
+	border-color: #19a9f3;
+	border-radius: 14px;
+	font-family: 'FoundrySterling-BoldOSF', Sans-Serif;
+	font-size: 20pt;
+	margin: 20px auto 7%;
+	max-width: 367px;
+	width: 100%;
+	height: 55px;
+}
+#div_parrafo_superior_formulario{
+	margin: 55px auto 30px auto;
+}
+.p_texto_blanco{
+	font-size: 27px;
+	color: white;
+}
+#div_parrafo_inferior_formulario{
+	margin: 15px auto;
+}
+.form-inline{
+	max-width: 400px;
+	margin: auto;
+}
+.form-group{
+	display: block !important; 
+	text-align: right !important;
+}
+#div_error_hidden{
+	text-align: center;
+	display: none;
+}
+#span_error{
+	color: red;
+	font-size: 13px;
+}
+.div_imagen_tabla{
+	height: 479px;
+}
+
+/*----------FOOTER----------*/
+#row_footer{
+	background-color: #301d5a;
+}
+.logo-header {
+    height: auto;
+    margin: 15px auto 15px auto;
+}
+div.a{
+	padding-top: 10px;
+}
+.a>a{
+	color: white;
+	
+}
+.a>a>img{
+	width:25px; 
+	float:left; 
+	margin:0px
+}
+.a>a>span{
+	font-size: 18px;
+	margin-left: 5px;
+}
+p.a{
+	font-size: 18px;
+	margin-left: 5px;
+	color:white;
+}
+/*--------------------------*/
+
+/*----------ERROR BOTONES----------*/
+input.error{border-bottom:2px solid #db0080!important;}
+select.error{border-bottom:2px solid #db0080!important;}
+label.error{display:none!important;}
+::placeholder{color:#3d0e73;}
+:-ms-input-placeholder{color:#3d0e73;}
+::-webkit-input-placeholder{color:#3d0e73;}
+::-moz-placeholder{color:#3d0e73;}
+/*---------------------------------*/
+
+@media screen and (max-width: 991px){
+	.p_texto_blanco{
+		font-size: 23px;
+	}
+	.form-group{
+		margin-right: 0px !important;
+	}
+}
+@media screen and (max-width: 767px){
+	.p_texto_morado{
+		font-size: 21px;
+	}
+	.p_texto_negro{
+		font-size: 21px;
+	}
+	#div_contenedor_texto_derecho_formulario{
+		margin-top: 15%;
+		margin-bottom: 15%;
+	}
+	.p_texto_blanco{
+		font-size: 26px;
+	}
+	.form-group{
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+}
+@media screen and (max-width: 500px){
+	.p_texto_morado{
+		font-size: 20px;
+	}
+	.p_texto_negro{
+		font-size: 20px;
+	}
+	#div_contenedor_texto_derecho_formulario{
+		margin-top: 15%;
+		margin-bottom: 15%;
+	}
+	.p_texto_blanco{
+		font-size: 25px;
+	}
+	.form-group{
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+}
