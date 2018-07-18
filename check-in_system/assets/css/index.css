@@ -1,3 +1,6 @@
+th{
+	text-align: center;
+}
 .container-fluid{
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -136,7 +139,7 @@
 	margin: auto;
 }
 .form-group{
-	display: block !important; 
+	display: block !important;
 	text-align: right !important;
 }
 #div_error_hidden{
@@ -164,11 +167,11 @@ div.a{
 }
 .a>a{
 	color: white;
-	
+
 }
 .a>a>img{
-	width:25px; 
-	float:left; 
+	width:25px;
+	float:left;
 	margin:0px
 }
 .a>a>span{
