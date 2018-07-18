@@ -45,7 +45,7 @@
 						</p>
 						<br>
 						<p class="text_medium p_texto_morado">
-							Aprende de los mejores asistiendo a las charlas que más relevancia tengan para tu negocio o empresa. 
+							Aprende de los mejores asistiendo a las charlas que más relevancia tengan para tu negocio o empresa.
 						</p>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 						<div id="div_imagen_agenda">
 							<img src="assets/images/tabla_agenda.png" alt="" width="100%">
 						</div>
-					</div>  
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -72,7 +72,7 @@
 						</p>
 						<br>
 						<p class="text_bold p_texto_morado mayuscula">
-							Stand 9-11 Salón de Convenciones. 2do. Nivel. 
+							Stand 9-11 Salón de Convenciones. 2do. Nivel.
 						</p>
 					</div>
 				</div>
@@ -85,7 +85,7 @@
 						</p>
 						<br>
 						<p class="text_medium p_texto_negro">
-							La mejor combinación de tecnología con una red de malla única de más de 60.000 km de fibra óptica que conecta a más de 40 países. 
+							La mejor combinación de tecnología con una red de malla única de más de 60.000 km de fibra óptica que conecta a más de 40 países.
 						</p>
 					</div>
 				</div>
@@ -141,7 +141,7 @@
 										<div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
 											<a target="blank" href="http://cw-eventos.com/ADJUNTOS/001/CWBusinessdatasheetVirtualDatacenterESP.PDF"><img src="assets/images/slide9.png"></a>
 										</div>
-	                </div>                    
+	                </div>
 	              </div>
 	              <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
 	                  <span class="glyphicon glyphicon-chevron-left"></span>
@@ -158,7 +158,7 @@
 				<div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-10 col-xs-offset-1">
 					<div id="div_contenedor_texto_derecho_formulario">
 						<p class="text_bold p_texto_negro">
-							Escucha las ponencias que tenemos preparadas para ti en nuestras salas VIP 
+							Escucha las ponencias que tenemos preparadas para ti en nuestras salas VIP
 						</p>
 						<p>
 							<ul class="text_medium p_texto_negro">
@@ -180,20 +180,22 @@
 								Regístrate ya y disfruta <br>de éstas increíbles ponencias <br>en nuestro Business Lounge
 							</p>
 						</div>
-						<form class="form-horizontal" method="post" id="form_register"> 
-	            <input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" /> 
-	            <input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/> 
-	            <input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/> 
+						<form class="form-horizontal" method="post" id="form_register">
+	            <input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
+	            <input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+	            <input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
 	            <input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
 	            <input class="form-control input-form" type="text" tabindex="5" placeholder="No. COLEGIADO:" name="colegiado" id="colegiado" />
 	            <input class="form-control input-form" type="text" tabindex="6" placeholder="No. CELULAR:" name="celular" id="celular" />
 	            <input class="form-control input-form" type="text" tabindex="7" placeholder="EMAIL:" name="email" id="email" />
-	            <input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" /> 
-	            <input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" /> 
-	            <input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" /> 
-	            <input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" /> 
-	            <input type="hidden" value="150" name="id_evento" id="id_evento">
-	            <div class="center-button"> 
+	            <input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
+	            <input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
+	            <input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
+	            <input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
+							<input type="hidden" name="url" id="url" value="controller/controller.php"/>
+							<input type="hidden" name="url_gracias" id="url_gracias" value="view/gracias.html"/>
+							<input type="hidden" value="150" name="id_evento" id="id_evento">
+	            <div class="center-button">
 	            	<button type="submit" class="btn button-form">CONFIRMAR</button>
 	            </div>
 		        </form>
@@ -214,10 +216,10 @@
 			<div class="a"><a target="_blank" href="https://twitter.com/CandWBusiness"><img src="assets/images/C&W_Landing_TW.png" class="img-responsive logo-header"><span>@CandWBusiness</span></a></div>
 	            </div>
 	            <div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-			<div class="a"><a target="_blank" href="https://vimeo.com/cwbusiness"><img src="assets/images/C&W_Landing_YT.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>	
+			<div class="a"><a target="_blank" href="https://vimeo.com/cwbusiness"><img src="assets/images/C&W_Landing_YT.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>
 	            </div>
 		<div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-		<div class="a"><a target="_blank" href="https://www.linkedin.com/company/c&w-business"><img src="assets/images/logo_linkedin.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>	
+		<div class="a"><a target="_blank" href="https://www.linkedin.com/company/c&w-business"><img src="assets/images/logo_linkedin.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>
 	            </div>
 	          </div>
 	  <div class="row">
