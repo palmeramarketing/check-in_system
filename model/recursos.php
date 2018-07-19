@@ -34,7 +34,7 @@ class Recursos
 		}
 	}
 
-	function sql_insert($sql){
+	function sql_insert_update($sql){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){

@@ -12,7 +12,7 @@ class Modelo
 		$clave = "";
 		$insert = "INSERT INTO participantes (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono)
 					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."')";
-		$result = $sql->sql_insert($insert);
+		$result = $sql->sql_insert_update($insert);
 
 		if ($result["status"] == 200) {
 			$clave = $datos["id_evento"]."-".$result["data"];
@@ -22,9 +22,8 @@ class Modelo
 			return $result;
 
 		}elseif ($result["status"] == 1062) {
-			$result_select = "";
-			$select = "SELECT id FROM participantes WHERE email = '".$datos["email"]."'";
-			$result_select = $sql->sql_select($select);
+			$update = "UPDATE participantes SET nombre = '".$datos["nombre"]."', apellido_1 = '".$datos["apellido_1"]."', apellido_2 = '".$datos["apellido_2"]."', especialidad = '".$datos["especialidad"]."', colegiado = '".$datos["colegiado"]."', celular = '".$datos["celular"]."', ciudad = '".$datos["ciudad"]."', pais = '".$datos["pais"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
+			$result = $sql->sql_insert_update($update);
 			return $result;
 		}
 	}
@@ -34,7 +33,7 @@ class Modelo
 		$insert = "INSERT INTO clave_participante (clave,id_participante,id_evento)
 					VALUES ('".$clave."','".$id_participante."','".$id_evento."')";
 
-		return $sql->sql_insert($insert);
+		return $sql->sql_insert_update($insert);
 	}
 
 	function buscar_participante($email){
@@ -52,7 +51,7 @@ class Modelo
 	function actualizar_asistencia($email){
 		$conexion = new Recursos();
 		$sql= "UPDATE participantes SET asistencia='Con asistencia' WHERE email='$email'";
-		$ejecutar= $conexion->sql_insert($sql);
+		$ejecutar= $conexion->sql_insert_update($sql);
 
 		if($ejecutar["status"] == 200){
 			return $ejecutar["data"];
