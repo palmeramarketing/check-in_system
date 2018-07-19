@@ -57,15 +57,15 @@ $("#form_register").validate({
 		    dataType : 'json',
 		    success : function(respuesta, status, req) {
 		    	if(respuesta.status == 1062){
-						$("#form_register")[0].reset();
-						alert("Disculpe ya existe un partcipente registrado con este email. Verifique su email.")
-					}else if(respuesta.status == 200){
-						$("#form_register")[0].reset();
-		    		$(location).attr('href', url_gracias);
-					}else {
-						$("#form_register")[0].reset();
-						alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
-					}
+					$("#form_register")[0].reset();
+					alert("Disculpe ya existe un partcipente registrado con este email. Verifique su email.")
+				}else if(respuesta.status == 200){
+					$("#form_register")[0].reset();
+	    			$(location).attr('href', url_gracias);
+				}else {
+					$("#form_register")[0].reset();
+					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
+				}
 		    },
 		    error : function(respuesta, status, req) {
 		    	console.log(status, respuesta, req);
