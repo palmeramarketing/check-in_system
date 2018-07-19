@@ -76,7 +76,6 @@ class Modelo
 		$result = $conexion->sql_select($select);
 		return $result;
 		if ($result["status"] == 200) {
-
 		}
 	}
 
