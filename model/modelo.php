@@ -23,7 +23,7 @@ class Modelo
 
 			if($resp["status"]= 200){
 
-				$envioEmail= self::envioCorreo($email, $codigo)
+				$envioEmail= self::envioCorreo($email, $codigo);
 				return $result;
 			}
 
@@ -76,7 +76,6 @@ class Modelo
 		$result = $conexion->sql_select($select);
 		return $result;
 		if ($result["status"] == 200) {
-			
 		}
 	}
 
@@ -661,6 +660,7 @@ class Modelo
 		        </table>
 		        <!-- // END UPPER BODY --></td>
 		      </tr>
+
 
 
 		      <tr>
