@@ -66,6 +66,20 @@ class Modelo
 		}
 	}
 
+	function imprimir_certificado($codigo){
+		$conexion = new Recursos();
+		$select = "SELECT *
+					FROM clave_participante clave
+					INNER JOIN participantes par
+					ON clave.id_participante = par.id
+					WHERE clave.clave = '$codigo'";
+		$result = $conexion->sql_select($select);
+		return $result;
+		if ($result["status"] == 200) {
+			
+		}
+	}
+
 	function envioCorreo($email, $codigo) {
 	  	$mail = new PHPMailer;
 		$mail->setFrom('info@cwc.com', 'MENARINI');
