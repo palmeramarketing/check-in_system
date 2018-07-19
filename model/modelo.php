@@ -23,7 +23,7 @@ class Modelo
 
 			if($resp["status"]= 200){
 
-				$envioEmail= self::envioCorreo($email, $codigo)
+				$envioEmail= self::envioCorreo($email, $codigo);
 				return $result;
 			}
 
@@ -63,6 +63,20 @@ class Modelo
 			return $ejecutar["data"];
 		}else{
 			return $ejecutar["status"];
+		}
+	}
+
+	function imprimir_certificado($codigo){
+		$conexion = new Recursos();
+		$select = "SELECT *
+					FROM clave_participante clave
+					INNER JOIN participantes par
+					ON clave.id_participante = par.id
+					WHERE clave.clave = '$codigo'";
+		$result = $conexion->sql_select($select);
+		return $result;
+		if ($result["status"] == 200) {
+
 		}
 	}
 
@@ -647,6 +661,7 @@ class Modelo
 		        </table>
 		        <!-- // END UPPER BODY --></td>
 		      </tr>
+
 
 
 		      <tr>
