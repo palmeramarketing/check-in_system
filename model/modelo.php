@@ -80,8 +80,6 @@ class Modelo
 		}
 	}
 
-}
-
 	function envioCorreo($email, $codigo) {
 	  	$mail = new PHPMailer;
 		$mail->setFrom('info@cwc.com', 'MENARINI');
