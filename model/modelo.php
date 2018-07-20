@@ -23,7 +23,7 @@ class Modelo
 
 			if($resp["status"]= 200){
 
-				$envioEmail= self::envioCorreo($email, $codigo);
+				$envioEmail= self::envioCorreo($datos["email"], $clave);
 				return $result;
 			}
 
@@ -76,6 +76,18 @@ class Modelo
 		$result = $conexion->sql_select($select);
 		return $result;
 		if ($result["status"] == 200) {
+		}
+	}
+
+	function login($correo, $clave){
+		$conexion = new Recursos();
+		$sql= "SELECT * FROM usuario WHERE email='$correo' AND password='$clave'";
+		$ejecutar= $conexion->sql_select($sql);
+
+		if ($ejecutar["status"] == 200) {
+			return $ejecutar["data"];
+		}else{
+			return $ejecutar["status"];
 		}
 	}
 

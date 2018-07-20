@@ -1,3 +1,13 @@
+<?php
+session_start();
+  if (isset($_POST["nombre"])){
+    $_SESSION["login"] = $_POST["nombre"];
+  }else if (!isset($_SESSION["login"])) {
+    header("Location: login.html");
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang=es>
 	 <head>
@@ -26,6 +36,9 @@
 					</div>
 				</div>
 			</div>
+			<div  style="text-align: right; margin: 10px auto; margin-right: 20px;">
+				<a href="../controller/salir.php">SALIR <img src="../assets/images/close.jpg" alt="" width="40px"></a>
+			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
 					<div id="imagen_header">
@@ -39,6 +52,8 @@
 					<div id="div_contenedor_formulario">
 						<div id="div_parrafo_superior_formulario" class="centrar">
 							<p class="text_book p_texto_blanco">
+								Hola <?php echo $_SESSION['login']?> <br>
+
 								Regístrate ya y disfruta <br>de éstas increíbles ponencias <br>en nuestro Business Lounge
 							</p>
 						</div>
@@ -65,7 +80,7 @@
         </div>
       </div>
 
-      
+
 
 			<div class="row content-footer" id="row_footer">
 				<div>

@@ -137,6 +137,41 @@ $("#form_register").validate({
 
 		 })
 
+
+	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+	$("#frm-login").validate(
+		 {
+					 rules:{
+							correo:{required:!0,email:!0},
+							clave:{required:!0},
+					 },
+					 messages:{
+								correo:{},
+								correo:{}
+						},
+						submitHandler: function(form) {
+
+									$.ajax({
+										url : "../controller/controller.php",
+										data : {correo: $("#correo").val(), clave: $("#clave").val(), accion: "login"},
+										type : "POST",
+										dataType: "json",
+										success : function(result) {
+											if(result == 404){
+												alert("Disculpe su correo o password son incorrectos"); return false;
+											}else if (result == 500){
+												alert("Disculpe ha ocurrido un error interno en el servidor"); return false;
+											}else {
+												 $("#nombre").val(result.nombre);
+												 $("#enviarLogin").submit();
+											}
+										}
+									})
+
+						}
+
+		 })
+
 		 $("#confimar").on("click", function(){
 
 			 $.ajax({

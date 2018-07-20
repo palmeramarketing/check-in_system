@@ -23,7 +23,11 @@ switch ($_POST["accion"]) {
 	case 'imprimir_certificado':
 		echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
 		break;
-		
+
+	case 'login':
+		echo json_encode($modelo->login($_POST["correo"], $_POST["clave"]));
+		break;
+
 	default:
 		# code...
 		break;
