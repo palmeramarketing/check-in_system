@@ -1,11 +1,24 @@
 <?php
+require_once("../db/conexion.php");
+include "../model/modelo.php";
+
 session_start();
-  if (isset($_POST["nombre"])){
-    $_SESSION["login"] = $_POST["nombre"];
-  }else if (!isset($_SESSION["login"])) {
+  if (isset($_REQUEST["login"])){
+    $_SESSION["login"] = $_REQUEST["login"];
+    $modelo = new Modelo();
+    $user= $modelo->buscarUsuario($_SESSION["login"]);
+    $logeo= $user["logeado"];
+    if($logeo == 0){
+      header("Location: login.html");
+      exit;
+    }
+
+  }else if (!isset($_SESSION["login"]) && ($logeo == '0')) {
     header("Location: login.html");
     exit;
   }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +65,7 @@ session_start();
 					<div id="div_contenedor_formulario">
 						<div id="div_parrafo_superior_formulario" class="centrar">
 							<p class="text_book p_texto_blanco">
-								Hola <?php echo $_SESSION['login']?> <br>
+								Hola <?php echo $user["nombre"];?> <br>
 
 								Regístrate ya y disfruta <br>de éstas increíbles ponencias <br>en nuestro Business Lounge
 							</p>

@@ -28,6 +28,14 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->login($_POST["correo"], $_POST["clave"]));
 		break;
 
+	case 'recuperar_password':
+		echo json_encode($modelo->recuperar_password($_POST["correo"]));
+		break;
+
+	case 'cambiar_password':
+		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
+		break;
+
 	default:
 		# code...
 		break;

@@ -29,23 +29,58 @@
 
       <div class="row background_azul" id="formBusqueda"  >
         <div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
-					<div id="div_contenedor_formulario">
-						<div id="div_parrafo_superior_formulario" class="centrar">
-							<p class="text_book p_texto_blanco">
-								INICIO DE SESION
-							</p>
+
+					<div id="div_login">
+						<div id="div_contenedor_formulario">
+							<div id="div_parrafo_superior_formulario" class="centrar">
+								<p class="text_book p_texto_blanco">
+									INICIO DE SESION
+								</p>
+							</div>
+							<form class="form-horizontal" id="frm-login" method="post" target="_self">
+								<input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
+								<input class="form-control input-form" tabindex="1" type="password" name=clave id=clave  placeholder="Ingrese su password">
+								<a href="#" id="olvido_passw" style="color: #fff ">Olvido su password?</a>
+								<div class="center-button">
+									<input class="btn button-form" name=ingresar tabindex=8 type=submit value=Ingresar>
+								</div>
+							</form>
 						</div>
-            <form class="form-horizontal" id="frm-login" method="post" target="_self">
-                <input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
-                <input class="form-control input-form" tabindex="1" type="password" name=clave id=clave  placeholder="Ingrese su password">
-	              <div class="center-button">
-	                <input class="btn button-form" name=enviar tabindex=8 type=submit value=Ingresar>
-	              </div>
-            </form>
-            <form class="form-horizontal" id="enviarLogin" action="visitador_medico.php" method="post" target="_self">
-                <input  type="hidden" name=nombre id=nombre >
-            </form>
-          </div>
+					</div>
+
+					<div id="div_recperar" style="display:none">
+						<div id="div_contenedor_formulario" >
+							<div id="div_parrafo_superior_formulario" class="centrar">
+								<p class="text_book p_texto_blanco">
+									RECUPERAR PASSWORD
+								</p>
+							</div>
+							<form class="form-horizontal" id="frm-recuperar" method="post" target="_self">
+								<input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
+								<div class="center-button">
+									<input class="btn button-form" name=recuperar tabindex=8 type=submit value=Recuperar>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div id="div_cambiar_passwd" style="display:none">
+						<div id="div_contenedor_formulario" >
+							<div id="div_parrafo_superior_formulario" class="centrar">
+								<p class="text_book p_texto_blanco">
+									CAMBIAR PASSWORD
+								</p>
+							</div>
+							<form class="form-horizontal" id="frm-cambiar" method="post" target="_self">
+								<input class="form-control input-form" tabindex="1" type="password" name=password1 id=password1  placeholder="Ingrese su nueva password">
+								<input class="form-control input-form" tabindex="2" type="password" name=password2 id=password2  placeholder="Repita su nueva password">
+								<input type="hidden" name=correo id=correo>
+								<div class="center-button">
+									<input class="btn button-form" name=cambiar tabindex=8 type=submit value=Cambiar>
+								</div>
+							</form>
+						</div>
+					</div>
 
         </div>
       </div>
