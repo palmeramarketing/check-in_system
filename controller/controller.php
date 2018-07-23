@@ -4,22 +4,38 @@ include "../model/modelo.php";
 
 error_reporting(0);
 
-$Modelo = new Modelo();
+$modelo = new Modelo();
 
 switch ($_POST["accion"]) {
 
 	case 'registrar_participantes':
-		echo json_encode($Modelo->registrar_participantes($_POST["data"]));
+		echo json_encode($modelo->registrar_participantes($_POST["data"]));
 		break;
 
 	case 'buscar_participante':
-		echo json_encode($Modelo->buscar_participante($_POST["email"]));
+		echo json_encode($modelo->buscar_participante($_POST["email"]));
 		break;
 
 	case 'actualizar_asistencia':
-		echo json_encode($Modelo->actualizar_asistencia($_POST["email"]));
+		echo json_encode($modelo->actualizar_asistencia($_POST["email"]));
 		break;
-		
+
+	case 'imprimir_certificado':
+		echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
+		break;
+
+	case 'login':
+		echo json_encode($modelo->login($_POST["correo"], $_POST["clave"]));
+		break;
+
+	case 'recuperar_password':
+		echo json_encode($modelo->recuperar_password($_POST["correo"]));
+		break;
+
+	case 'cambiar_password':
+		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
+		break;
+
 	default:
 		# code...
 		break;
