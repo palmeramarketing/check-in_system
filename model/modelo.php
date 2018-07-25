@@ -4,6 +4,8 @@ error_reporting( E_ALL );
 require_once("recursos.php");
 require_once('../mailer/class.phpmailer.php');
 require '../mailer/PHPMailerAutoload.php';
+include "../model/pdf_generator.php";
+
 
 class Modelo
 {
@@ -23,7 +25,7 @@ class Modelo
 
 			if($resp["status"]= 200){
 
-				$envioEmail= self::envioCorreo($email, $codigo)
+				$envioEmail= self::envioCorreo($email, $codigo);
 				return $result;
 			}
 
@@ -66,18 +68,34 @@ class Modelo
 		}
 	}
 
-	function imprimir_certificado($codigo){
+	function imprimir_certificado($codigo, $imprimir = false){
 		$conexion = new Recursos();
 		$select = "SELECT *
 					FROM clave_participante clave
 					INNER JOIN participantes par
 					ON clave.id_participante = par.id
+					INNER JOIN certificado cer
+					ON cer.id_evento = clave.id_evento
 					WHERE clave.clave = '$codigo'";
-		$result = $conexion->sql_select($select);
-		return $result;
-		if ($result["status"] == 200) {
-			
+		$datos = $conexion->sql_select($select);
+		if ($imprimir) {
+			if ($datos["status"] == 200) {
+				$pdf = new PDF_generator();
+				$pdf->imprimir_pdf($datos);
+			}else{
+				return $datos;
+			}
+		}else{
+			return $datos;
 		}
+	}
+
+	function guardar_certificado($data, $archivo){
+		$conexion = new Recursos();
+		$file_data = file_get_contents($archivo['tmp_name']);
+		$insert = "INSERT INTO certificado (id_evento,nombre_certificado,data_html)
+					VALUES ('".$data["id_evento"]."','".$data["nombre"]."','$file_data')";
+		return $conexion->sql_insert_update($insert);
 	}
 
 	function envioCorreo($email, $codigo) {
