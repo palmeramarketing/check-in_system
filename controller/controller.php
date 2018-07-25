@@ -20,8 +20,14 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->actualizar_asistencia($_POST["email"]));
 		break;
 
+	case 'guardar_certificado':
+		$archivo = $_FILES["archivo_html"];
+		echo json_encode($modelo->guardar_certificado($_POST, $archivo));
+		break;
+
 	case 'imprimir_certificado':
-		echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
+		$modelo->imprimir_certificado($_POST["cod_part"],true);
+		// echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
 		break;
 
 	case 'login':
