@@ -61,7 +61,7 @@ $("#form_register").validate({
 					alert("Disculpe ya existe un partcipente registrado con este email. Verifique su email.")
 				}else if(respuesta.status == 200){
 					$("#form_register")[0].reset();
-	    			$(location).attr('href', url_gracias);
+	    		$(location).attr('href', url_gracias);
 				}else {
 					$("#form_register")[0].reset();
 					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
@@ -137,6 +137,46 @@ $("#form_register").validate({
 
 		 })
 
+
+	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+	$("#frm-login").validate(
+		 {
+					 rules:{
+							correo:{required:!0,email:!0},
+							clave:{required:!0},
+					 },
+					 messages:{
+								correo:{},
+								correo:{}
+						},
+						submitHandler: function(form) {
+
+									$.ajax({
+										url : "../controller/controller.php",
+										data : {correo: $("#correo").val(), clave: $("#clave").val(), accion: "login"},
+										type : "POST",
+										dataType: "json",
+										success : function(result) {
+											if(result == 404){
+												alert("Disculpe su correo o password son incorrectos"); return false;
+											}else if (result == 500){
+												alert("Disculpe ha ocurrido un error interno en el servidor"); return false;
+											}else {
+												if(result.estatus == 1){
+													window.location.href = "visitador_medico.php?login="+result.id;
+												}else if(result.estatus == 2){
+													$("#div_login").hide();
+													$("#div_recperar").hide();
+													$("#div_cambiar_passwd").show();
+												}
+											}
+										}
+									})
+
+						}
+
+		 })
+
 		 $("#confimar").on("click", function(){
 
 			 $.ajax({
@@ -154,6 +194,88 @@ $("#form_register").validate({
 			 })
 
 		 })
+
+		 $("#olvido_passw").on("click", function(){
+
+				$("#div_login").hide();
+				$("#div_recperar").show();
+				$("#div_cambiar_passwd").hide();
+
+		 })
+
+		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+	 	$("#frm-recuperar").validate(
+	 		 {
+	 					 rules:{
+	 							correo:{required:!0,email:!0},
+	 					 },
+	 					 messages:{
+	 								correo:{},
+	 						},
+	 						submitHandler: function(form) {
+
+	 									$.ajax({
+	 										url : "../controller/controller.php",
+	 										data : {correo: $("#correo").val(), accion: "recuperar_password"},
+	 										type : "POST",
+	 										dataType: "json",
+	 										success : function(result) {
+	 											if(result == 500){
+													alert("Disculpe ha ocurrido un error interno en el servidor"); return false;
+	 											}else if (result == 404){
+													alert("Disculpe usted no posee usuario"); return false;
+	 											}else {
+													alert("Su nueva clave fue enviada a su correo"+ result);
+													$("#div_login").show();
+													$("#div_recperar").hide();
+													$("#div_cambiar_passwd").hide();
+	 											}
+	 										}
+	 									})
+
+	 						}
+
+	 		 })
+
+		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+	 	$("#frm-cambiar").validate(
+	 		 {
+	 					 rules:{
+	 							password1:{required:!0},
+	 							password2:{required:!0},
+	 					 },
+	 					 messages:{
+	 								password1:{},
+	 								password2:{},
+	 						},
+	 						submitHandler: function(form) {
+
+									if($("#password1").val() != $("#password2").val()){
+											alert("Verfique que los passwords ingresados coincidan");
+											return false;
+									}
+
+	 									$.ajax({
+	 										url : "../controller/controller.php",
+	 										data : {correo: $("#correo").val(), passwd: $("#password1").val(), accion: "cambiar_password"},
+	 										type : "POST",
+	 										dataType: "json",
+	 										success : function(result) {
+	 											if(result == 200){
+	 												alert("Su clave fue cambiada exitosamente. Ingrese con su nueva clave");
+													$("#div_login").show();
+													$("#div_recperar").hide();
+													$("#div_cambiar_passwd").hide();
+	 											}else{
+													alert("Disculpe ha ocurrido un error interno en el servidor"); return false;
+	 											}
+	 										}
+	 									})
+
+	 						}
+
+	 		 })
+
 
 function doKey(event){
   var key = event.which || event.keyCode;

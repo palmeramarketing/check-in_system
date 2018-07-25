@@ -29,7 +29,19 @@ switch ($_POST["accion"]) {
 		$modelo->imprimir_certificado($_POST["cod_part"],true);
 		// echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
 		break;
-		
+
+	case 'login':
+		echo json_encode($modelo->login($_POST["correo"], $_POST["clave"]));
+		break;
+
+	case 'recuperar_password':
+		echo json_encode($modelo->recuperar_password($_POST["correo"]));
+		break;
+
+	case 'cambiar_password':
+		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
+		break;
+
 	default:
 		# code...
 		break;
