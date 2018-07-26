@@ -56,10 +56,7 @@ $("#form_register").validate({
 		    type : 'POST',
 		    dataType : 'json',
 		    success : function(respuesta, status, req) {
-		    	if(respuesta.status == 1062){
-					$("#form_register")[0].reset();
-					alert("Disculpe ya existe un partcipente registrado con este email. Verifique su email.")
-				}else if(respuesta.status == 200){
+		    	if(respuesta.status == 200){
 					$("#form_register")[0].reset();
 	    		$(location).attr('href', url_gracias);
 				}else {
@@ -216,7 +213,7 @@ $("#form_register").validate({
 
 	 									$.ajax({
 	 										url : "../controller/controller.php",
-	 										data : {correo: $("#correo").val(), accion: "recuperar_password"},
+	 										data : {correo: $("#correo_rec").val(), accion: "recuperar_password"},
 	 										type : "POST",
 	 										dataType: "json",
 	 										success : function(result) {
