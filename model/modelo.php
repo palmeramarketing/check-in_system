@@ -160,7 +160,14 @@ class Modelo
 		$sql= "UPDATE usuario SET logeado=0 WHERE id=$id";
 		$ejecutar= $conexion->sql_insert_update($sql);
 		return $ejecutar["status"];
-  }
+    }
+
+    function listar_evento(){
+    	$conexion = new Recursos();
+    	$sql = "SELECT * FROM evento WHERE estatus=1";
+    	$result= $conexion->sql_select($sql);
+		return $result;
+    }
 
 	function envioCorreo($email, $codigo) {
 	  	$mail = new PHPMailer;

@@ -32,11 +32,10 @@
 							Ingrese su codigo de usuario para imprimir su certificado del evento.
 						</p>
 					</div>
-          <form class="form-horizontal" id="form_codigo" method="post">
-            <input class="form-control input-form" tabindex="1" type="text" name=input_codigo id=input_codigo  placeholder="Ingrese su codigo">
-            <div class="center-button">
-              <input class="btn button-form" name=enviar tabindex=2 type=submit value=Imprimir id="btn_imprimir">
-            </div>
+          <form class="form-horizontal" id="form_codigo" method="post" action="../controller/controller.php" target="_blank">
+            <input class="form-control input-form" tabindex="1" type="text" name=cod_part id=input_codigo  placeholder="Ingrese su codigo">
+            <input type="hidden" name="accion" value="imprimir_certificado">
+            <input type="submit" id="enviar_cod_part" value="Imprimir Certificado" class="btn button-form">
           </form>
         </div>
       </div>
