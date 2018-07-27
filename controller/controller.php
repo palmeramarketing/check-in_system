@@ -41,6 +41,10 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
 		break;
 
+	case 'registrar_evento':
+		echo json_encode($modelo->registrar_evento($_POST["datos"]));
+		break;
+
 	default:
 		echo json_encode($modelo->listar_evento());
 		break;

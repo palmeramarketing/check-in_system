@@ -158,15 +158,21 @@ class Modelo
 	function updateLogeo($id){
 		$conexion = new Recursos();
 		$sql= "UPDATE usuario SET logeado=0 WHERE id=$id";
-		$ejecutar= $conexion->sql_insert_update($sql);
+		$ejecutar = $conexion->sql_insert_update($sql);
 		return $ejecutar["status"];
     }
 
     function listar_evento(){
     	$conexion = new Recursos();
     	$sql = "SELECT * FROM evento WHERE estatus=1";
-    	$result= $conexion->sql_select($sql);
-		return $result;
+    	return $conexion->sql_select($sql);
+    }
+
+    function registrar_evento($datos){
+    	$conexion = new Recursos();
+    	$sql = "INSERT INTO evento (nombre,fecha,direccion)
+    			VALUES ('".$datos["nombre"]."','".$datos["fecha"]."','".$datos["direccion"]."')";
+    	return $conexion->sql_insert_update($sql);
     }
 
 	function envioCorreo($email, $codigo) {

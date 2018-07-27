@@ -23,9 +23,11 @@
 					</h1>
 					<br>
 					<form class="form-horizontal" id="form_cod_part" method="post">
-						<input type="text" name="nombre_evento" id="nombre_evento" class="form-control input-form">
+						<input type="text" name="nombre_evento" id="nombre_evento" class="form-control input-form" placeholder="Nombre">
 						<br>
-						<input type="date" name="fecha_evento" id="fecha_evento" class="form-control input-form">
+						<input type="date" name="fecha_evento" id="fecha_evento" class="form-control input-form" placeholder="Fecha">
+						<br>
+						<input type="text" name="direccion_evento" id="direccion_evento" class="form-control input-form" placeholder="Direccion">
 						<br>
 						<input type="submit" id="enviar_cod_part" value="Registrarlo" class="btn button-form">
 					</form>
@@ -59,6 +61,7 @@
 <script type="text/javascript" src="../assets/plugins/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../assets/plugins/datatable/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="../assets/plugins/datatable/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/jquery/jquery.validate.min.js"></script>
 <script type="text/javascript" src="../assets/js/configurar_evento.js"></script>
 </body>
 </html>
