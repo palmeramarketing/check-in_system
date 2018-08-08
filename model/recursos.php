@@ -3,9 +3,13 @@
 class Recursos
 {
 
-	function sql_select($sql){
+	function sql_select($sql, $change_db=false){
 		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
+		if ($change_db) {
+			$mysqli = $conexion->conectar_mysqli("root","","evento");
+		}else{
+			$mysqli = $conexion->conectar_mysqli();
+		}
 		if ($mysqli["status"] == 200) {
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
@@ -34,9 +38,13 @@ class Recursos
 		}
 	}
 
-	function sql_insert_update($sql){
+	function sql_insert_update($sql, $change_db=false){
 		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
+		if ($change_db) {
+			$mysqli = $conexion->conectar_mysqli("root","","evento");
+		}else{
+			$mysqli = $conexion->conectar_mysqli();
+		}
 		if($mysqli["status"] == 200){
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {

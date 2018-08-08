@@ -17,12 +17,24 @@ $("#enviar_certificado").click(function(){
 		type: "POST",
 		dataType: "json",
 		success: function(respuesta, status, req){
-			console.log(respuesta);
-			return false;
+			if (respuesta.status == 200) {
+				$("#span_texto_respuesta").text("Listo.");
+			}else if (respuesta.status == 1062) {
+				$("#span_texto_respuesta").text("Ya existe un certificado para este evento.");
+			}else{
+				$("#span_texto_respuesta").text("Hubo un error, pilla la consola a ver...");
+			}
+			console.log(respuesta, status, req);
 		},
 		error: function(respuesta, status, req){
+			$("#span_texto_respuesta").text("CRASH! Pilla la consola a ver que paso...");
 			console.log(respuesta, status, req);
-			return false;
 		}
 	});
+});
+
+$("#enviar_cod_part").click(function(){
+	if ($("#cod_part").val() == "") {
+		return false;
+	}
 });

@@ -1,3 +1,5 @@
+
+
 $("#btn_imprimir").click(function(){
 	var codigo = $("#input_codigo").val();
 	if (codigo != "") {

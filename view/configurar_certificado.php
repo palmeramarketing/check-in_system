@@ -22,12 +22,15 @@
 						Insertar código participante
 					</h1>
 					<br>
-					<form class="form-horizontal" id="form_cod_part" method="post" action="../controller/controller.php">
+					<form class="form-horizontal" id="form_cod_part" method="post" action="../controller/controller.php" target="_blank">
 						<input type="text" name="cod_part" id="cod_part" class="form-control input-form">
 						<input type="hidden" name="accion" value="imprimir_certificado">
 						<br>
 						<input type="submit" id="enviar_cod_part" value="Imprimir Certificado" class="btn button-form">
 					</form>
+					<div id="div_respuesta">
+						<span id="span_texto_respuesta_imprimir"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -56,6 +59,9 @@
 						<br>
 						<input type="button" id="enviar_certificado" value="Guardar Certificado" class="btn button-form">
 					</form>
+					<div id="div_respuesta">
+						<span id="span_texto_respuesta"></span>
+					</div>
 				</div>
 			</div>
 		</div>

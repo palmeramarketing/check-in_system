@@ -27,7 +27,6 @@ switch ($_POST["accion"]) {
 
 	case 'imprimir_certificado':
 		$modelo->imprimir_certificado($_POST["cod_part"],true);
-		// echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
 		break;
 
 	case 'login':
@@ -42,8 +41,12 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
 		break;
 
+	case 'registrar_evento':
+		echo json_encode($modelo->registrar_evento($_POST["datos"]));
+		break;
+
 	default:
-		# code...
+		echo json_encode($modelo->listar_evento());
 		break;
 }
 ?>
