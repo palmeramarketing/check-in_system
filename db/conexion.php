@@ -1,9 +1,9 @@
 <?php 
 class Conexion{
 	private $conexion;
-	public function conectar_mysqli(){ 
+	public function conectar_mysqli($user="root", $pass="", $db="checkin_system"){ 
 		if(!isset($this->conexion)){
-			$this->conexion = new mysqli('localhost', 'root', '', 'check-in_system');
+			$this->conexion = new mysqli('localhost', $user, $pass, $db);
 			if (mysqli_connect_errno()){
 				return ["data"=>"", "error"=>mysqli_connect_error(), "status"=>500];
 			}else{
