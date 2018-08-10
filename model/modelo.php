@@ -14,6 +14,10 @@ class Modelo
 		$sql = new Recursos();
 		$result = "";
 		$clave = "";
+		$registro = self::registrar_participante_sistema_eventos($datos, $sql);
+		if ($registro["status"] != 200) {
+			return $registro;
+		}
 		$insert = "INSERT INTO participantes (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono)
 					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."')";
 		$result = $sql->sql_insert_update($insert);
@@ -23,7 +27,7 @@ class Modelo
 
 			$resp = self::registrar_clave_participante($clave,$result["data"],$datos["id_evento"]);
 
-			if($resp["status"]= 200){
+			if($resp["status"] = 200){
 
 				$envioEmail= self::envioCorreo($datos["email"], $clave);
 				return $result;
@@ -34,6 +38,21 @@ class Modelo
 			$result = $sql->sql_insert_update($update);
 			return $result;
 		}
+	}
+
+	function registrar_participante_sistema_eventos($datos, $conexion){
+		$sql = "INSERT INTO participante (email,nombre,apellido,direccion,telefono,estatus)
+				VALUES ('".$datos["email"]."','".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["direccion"]."','".$datos["telefono"]."','1')";
+		$resp = $conexion->sql_insert_update($sql,true);
+		if ($resp["status"] == 1062) {
+			return self::update_participante_sistema_eventos($datos, $conexion);
+		}
+		return $resp;
+	}
+
+	function update_participante_sistema_eventos($datos, $conexion){
+		$sql = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido = '".$datos["apellido_1"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
+		return $conexion->sql_insert_update($sql,true);
 	}
 
 	function registrar_clave_participante($clave, $id_participante, $id_evento){
@@ -158,9 +177,22 @@ class Modelo
 	function updateLogeo($id){
 		$conexion = new Recursos();
 		$sql= "UPDATE usuario SET logeado=0 WHERE id=$id";
-		$ejecutar= $conexion->sql_insert_update($sql);
+		$ejecutar = $conexion->sql_insert_update($sql);
 		return $ejecutar["status"];
-  }
+    }
+
+    function listar_evento(){
+    	$conexion = new Recursos();
+    	$sql = "SELECT * FROM evento WHERE estatus=1";
+    	return $conexion->sql_select($sql);
+    }
+
+    function registrar_evento($datos){
+    	$conexion = new Recursos();
+    	$sql = "INSERT INTO evento (nombre,fecha,direccion)
+    			VALUES ('".$datos["nombre"]."','".$datos["fecha"]."','".$datos["direccion"]."')";
+    	return $conexion->sql_insert_update($sql);
+    }
 
 	function envioCorreo($email, $codigo) {
 	  	$mail = new PHPMailer;
