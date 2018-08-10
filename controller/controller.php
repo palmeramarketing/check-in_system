@@ -20,8 +20,13 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->actualizar_asistencia($_POST["email"]));
 		break;
 
+	case 'guardar_certificado':
+		$archivo = $_FILES["archivo_html"];
+		echo json_encode($modelo->guardar_certificado($_POST, $archivo));
+		break;
+
 	case 'imprimir_certificado':
-		echo json_encode($modelo->imprimir_certificado($_POST["codigo"]));
+		$modelo->imprimir_certificado($_POST["cod_part"],true);
 		break;
 
 	case 'login':
@@ -36,8 +41,12 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->cambiar_password($_POST["correo"], $_POST["passwd"]));
 		break;
 
+	case 'registrar_evento':
+		echo json_encode($modelo->registrar_evento($_POST["datos"]));
+		break;
+
 	default:
-		# code...
+		echo json_encode($modelo->listar_evento());
 		break;
 }
 ?>
