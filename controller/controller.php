@@ -45,6 +45,18 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->registrar_evento($_POST["datos"]));
 		break;
 
+	case 'registrar_usuario':
+		echo json_encode($modelo->registrar_usuario($_POST));
+		break;
+
+	case 'modificar_usuario':
+		echo json_encode($modelo->modificar_usuario($_POST));
+		break;
+
+	case 'deshabilitar_usuario':
+		echo json_encode($modelo->deshabilitar_usuario($_POST));
+		break;
+
 	default:
 		echo json_encode($modelo->listar_evento());
 		break;
