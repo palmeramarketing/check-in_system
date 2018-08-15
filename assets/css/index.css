@@ -1,4 +1,4 @@
-th{
+ th{
 	text-align: center;
 }
 .container-fluid{
@@ -17,6 +17,7 @@ th{
 	width: 100%;
 	margin: 30px auto 30px auto;
 }
+
 .espacio_secciones{
 	margin: 50px auto;
 }
@@ -66,6 +67,7 @@ th{
 	font-size: 27px;
 	color: #565656;
 }
+
 #div_parrafo_seccion_video{
 	margin: 75px auto;
 }
@@ -93,6 +95,7 @@ th{
 #rosa{
 	color: #ea008a;
 }
+
 #div_contenedor_texto_derecho_formulario{
 	margin-top: 40%;
 }
@@ -134,10 +137,11 @@ th{
 #div_parrafo_inferior_formulario{
 	margin: 15px auto;
 }
-.form-inline{
+/* .form-inline{
 	max-width: 400px;
 	margin: auto;
-}
+} */
+
 .form-group{
 	display: block !important;
 	text-align: right !important;

@@ -1,3 +1,14 @@
+$('#tabla_lista_usuario').DataTable();
+
+$("#nuevo_user").click(function(){
+	if ($(this).hasClass("active")) {
+		$("#registroUser").slideUp();
+	}else{
+		$("#registroUser").slideDown();
+	}
+	$(this).toggleClass("active");
+});
+
 $.validator.addMethod('betterEmail', function (value, element) {
 	return this.optional(element) || /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
 }, "Please enter a valid email address.");
@@ -274,6 +285,149 @@ $("#form_register").validate({
 	 		 })
 
 
+			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
+		 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+		 	$("#form_registro_usuario").validate({
+				rules:{
+					usuario_r:{required:!0,minlength:2},
+					email_r:{required:!0,email:!0},
+					password_r:{required:!0,minlength:5}
+				},
+				submitHandler: function(form) {
+					var datos = {
+						accion:"registrar_usuario",
+						usuario:$("#usuario_r").val(),
+						email:$("#email_r").val(),
+						password:$("#password_r").val()
+					};
+
+					$.ajax({
+						url : '../controller/controller.php',
+						data : datos,
+						type : 'POST',
+						dataType : 'json',
+						success : function(respuesta) {
+							if (respuesta.status == 200) {
+								alert_message("Exito! ","Nuevo usuario registrado.", "alert-success");
+								$("#form_registro_usuario")[0].reset();
+								location.reload();
+							}else if (respuesta.status == 1062) {
+								alert_message("Aviso! ","El usuario ya existe.", "alert-warning");
+							}else if (respuesta.status == 500) {
+								alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
+							};
+						},
+						error : function(respuesta) {
+							alert_message("Error! ","Hubo un error con el servidor, intente de nuevo m&aacute;s tarde.", "alert-danger");
+						},
+					});
+				}
+			});
+
+			var table= $('#tabla_lista_usuario').DataTable();
+
+			$('#tabla_lista_usuario tbody').on("click", ".accion_modificar", function(){
+				var data = table.row($(this).parents("tr")).data();
+
+				$("#mod_id").val(data[0]);
+				$("#mod_usuario").val(data[1]);
+				$("#mod_email").val(data[2]);
+				$("#mod_tipo").val((data[3]== "Administrador")? "admin" : "superadmin");
+				$("#mod_estatus").val((data[4]== "Activo")? 1: 0);
+			});
+
+			// ACCION MODIFICAR USUARIO-------------------
+			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
+			$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+			$("#form_modifi_usuario").validate({
+		    	rules:{
+		            mod_usuario:{required:!0,minlength:2},
+		            mod_email:{required:!0},
+		            mod_tipo:{required:!0},
+		            mod_estatus:{required:!0}
+		    	},
+		    	submitHandler: function(form) {
+					var datos = {
+						accion:"modificar_usuario",
+						id: $("#mod_id").val(),
+						nombre:$("#mod_usuario").val(),
+						email:$("#mod_email").val(),
+						perfil:$("#mod_tipo").val(),
+						estatus:$("#mod_estatus").val()
+					};
+
+					$.ajax({
+					    url : '../controller/controller.php',
+					    data : datos,
+					    type : 'POST',
+					    dataType : 'json',
+					    success : function(respuesta) {
+					    	if (respuesta.status == 200) {
+					    		alert_message("Exito! ","Usuario actualizado.", "alert-success");
+					    		setTimeout(function(){
+					    			$(".cerrar_modal").click();
+										location.reload();
+									 }, 2000);
+					    	}else if (respuesta.status == 500) {
+					    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
+					    	};
+					    },
+					    error : function(respuesta) {
+					        alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+					    },
+					    // código a ejecutar sin importar si la petición falló o no
+					    // complete : function(xhr, status) {
+					    //     alert('LOADING!!!!!!!!!!');
+					    // }
+					});
+		    	}
+		    });
+			// ------------------------------------------
+
+			// ACCION ELIMINAR EVENTO--------------------
+			$('#tabla_lista_usuario tbody').on("click", ".accion_eliminar", function(){
+				$(this).confirmation({
+					onConfirm: function() {
+						var data = table.row($(this).parents("tr")).data();
+						var datos = {
+							accion:"deshabilitar_usuario",
+							id:data[0]
+						}
+						$.ajax({
+						    url : '../controller/controller.php',
+						    data : datos,
+						    type : 'POST',
+						    dataType : 'json',
+						    success : function(respuesta) {
+						    	if (respuesta.status == 200) {
+						    		location.reload();
+						    	}else if (respuesta.status == 500) {
+						    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
+						    	};
+						    },
+						    error : function(respuesta) {
+								alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+						    },
+						    // código a ejecutar sin importar si la petición falló o no
+						    // complete : function(xhr, status) {
+						    //     alert('LOADING!!!!!!!!!!');
+						    // }
+						});
+					}
+				});
+				$(this).confirmation( 'show' );
+			});
+			// ------------------------------------------
+
+function alert_message(strong, span, tipo){
+		$(".mensaje-strong").text(strong+" ");
+		$(".mensaje-span").text(span);
+		$(".mensaje-div").addClass("alert "+tipo);
+		$(".mensaje-div").slideDown();
+		setTimeout(function(){
+			$(".mensaje-div").slideUp();
+		}, 2500);
+}
 function doKey(event){
   var key = event.which || event.keyCode;
   if ((key < 48 || key > 57) && (key != 43) && (key != 32) && (key != 8)){
