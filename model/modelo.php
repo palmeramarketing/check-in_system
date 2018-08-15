@@ -174,6 +174,13 @@ class Modelo
 		return $ejecutar["data"];
 	}
 
+	function buscarAllUsuario(){
+		$conexion = new Recursos();
+		$sql= "SELECT * FROM usuario";
+		$ejecutar= $conexion->sql_select($sql);
+		return $ejecutar["data"];
+	}
+
 	function updateLogeo($id){
 		$conexion = new Recursos();
 		$sql= "UPDATE usuario SET logeado=0 WHERE id=$id";
@@ -193,6 +200,26 @@ class Modelo
     			VALUES ('".$datos["nombre"]."','".$datos["fecha"]."','".$datos["direccion"]."')";
     	return $conexion->sql_insert_update($sql);
     }
+
+    function registrar_usuario($datos){
+    	$conexion = new Recursos();
+			$sql = "INSERT INTO usuario (email, nombre, password, tipo, estatus)
+			VALUES ('".$datos["email"]."','".$datos["usuario"]."','".$datos["password"]."', 'admin', 1)";
+    	return $conexion->sql_insert_update($sql);
+    }
+
+    function modificar_usuario($datos){
+    	$conexion = new Recursos();
+			$sql = "UPDATE usuario SET estatus='".$datos['estatus']."', email='".$datos['email']."', tipo='".$datos['perfil']."', nombre='".$datos['nombre']."' WHERE id= ".$datos['id'];
+    	return $conexion->sql_insert_update($sql);
+    }
+
+		function deshabilitar_usuario($datos){
+			$conexion = new Recursos();
+			$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
+			$ejecutar= $conexion->sql_insert_update($sql);
+			return $ejecutar;
+		}
 
 	function envioCorreo($email, $codigo) {
 	  	$mail = new PHPMailer;
