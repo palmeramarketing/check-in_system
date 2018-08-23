@@ -116,8 +116,6 @@ $("#form_register").validate({
 														 $("#formRegistro").hide();
 												 });
 											 }else{
-												 console.log(result);
-
 												 $("#label_nombre").html(result.nombre);
 												 $("#label_primer_apellido").html(result.apellido_1);
 												 $("#label_segundo_apellido").html(result.apellido_2);
