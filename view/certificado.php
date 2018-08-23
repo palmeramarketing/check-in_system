@@ -29,11 +29,12 @@
 				<div id="div_contenedor_formulario">
 					<div id="div_parrafo_superior_formulario" class="centrar">
 						<p class="text_book p_texto_blanco">
-							Ingrese su codigo de usuario para imprimir su certificado del evento.
+							Ingrese su correo o codigo de colegiado para imprimir su certificado del evento.
 						</p>
 					</div>
           <form class="form-horizontal" id="form_codigo" method="post" action="../controller/controller.php" target="_blank">
-            <input class="form-control input-form" tabindex="1" type="text" name=cod_part id=input_codigo  placeholder="Ingrese su codigo">
+            <input class="form-control input-form" tabindex="1" type="text" name=cod_part id=input_codigo  placeholder="Ingrese su email o codigo de colegiado">
+            <input type="hidden" name=id_evento id=id_evento value="150">
             <input type="hidden" name="accion" value="imprimir_certificado">
             <input type="submit" id="enviar_cod_part" value="Imprimir Certificado" class="btn button-form">
           </form>
