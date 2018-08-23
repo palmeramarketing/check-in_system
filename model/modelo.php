@@ -29,7 +29,7 @@ class Modelo
 
 			if($resp["status"] = 200){
 
-				$envioEmail= self::envioCorreo($datos["email"], $clave);
+				$envioEmail= self::envioCorreo($datos["email"]);
 				return $result;
 			}
 
@@ -223,7 +223,7 @@ class Modelo
 			return $ejecutar;
 		}
 
-	function envioCorreo($email, $codigo) {
+	function envioCorreo($email) {
 	  	$mail = new PHPMailer;
 		$mail->setFrom('info@cwc.com', 'MENARINI');
 		$mail->addAddress($email,'');
@@ -778,12 +778,6 @@ class Modelo
 		                          <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #232327;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 		                          <div style="width: 100%; text-align: center;">
 		                            <p style="text-align: center; font-size: 25pt">GRACIAS POR SU <br> REGISTRO</p>
-		                          </div>
-		                          <div style="width: 100%; text-align: center;">
-		                            <p style="text-align: center; font-size: 20pt"> Su codigo de validacion para imprimir su certificado es el siguiente:</p>
-		                          </div>
-		                          <div style="width: 100%; text-align: center;">
-		                            <p style="color: #adadad; text-align: center; font-size: 25pt">'.$codigo.'</p>
 		                          </div>
 		                          </td>
 		                        </tr>
