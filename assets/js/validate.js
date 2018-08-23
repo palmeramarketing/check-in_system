@@ -16,7 +16,8 @@ $("#form_register").validate({
 	  ciudad:{required:!0,minlength:2},
 	  pais:{required:!0,minlength:2},
 	  direccion:{required:!0,minlength:7},
-	  telefono:{required:!0,minlength:2}
+	  telefono:{required:!0,minlength:2},
+	  terminos:{required:!0}
 	},
 	messages:{
 	  nombre:{},
@@ -29,7 +30,8 @@ $("#form_register").validate({
 	  ciudad:{},
 	  pais:{},
 	  direccion:{},
-	  telefono:{}
+	  telefono:{},
+	  terminos:{}
 	},
 	submitHandler: function() {
 		var datos = {

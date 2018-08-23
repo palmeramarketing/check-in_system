@@ -45,6 +45,10 @@ switch ($_POST["accion"]) {
 		echo json_encode($modelo->registrar_evento($_POST["datos"]));
 		break;
 
+	case 'imprimir_gafete':
+		echo json_encode($modelo->imprimir_gafete($_POST["email"]));
+		break;
+
 	default:
 		echo json_encode($modelo->listar_evento());
 		break;
