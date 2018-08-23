@@ -55,7 +55,8 @@ $("#form_register").validate({
 			pais : $("#pais").val(),
 			direccion : $("#direccion").val(),
 			telefono : $("#telefono").val(),
-			id_evento : $("#id_evento").val()
+			id_evento : $("#id_evento").val(),
+			asistencia : $("#asistencia").val()
 		};
 
 		var url= $("#url").val();
@@ -115,7 +116,7 @@ $("#form_register").validate({
 														 $("#formRegistro").hide();
 												 });
 											 }else{
-												 $("#modalAsistencia").modal('show');
+												 console.log(result);
 
 												 $("#label_nombre").html(result.nombre);
 												 $("#label_primer_apellido").html(result.apellido_1);
@@ -128,6 +129,12 @@ $("#form_register").validate({
 												 $("#label_pais").html(result.pais);
 												 $("#label_direccion_clinica").html(result.direccion);
 												 $("#label_telefono").html(result.telefono);
+												 if(result.asistencia== "Con asistencia"){
+													 $("#correo").val('');
+													$("#resultado").show();
+												 }else {
+													 $("#modalAsistencia").modal('show');
+												 }
 
 												 $("#noconfirmar").on("click", function(){
 													 	 $("#correo").val('');
