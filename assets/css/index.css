@@ -1,4 +1,4 @@
-th{
+ th{
 	text-align: center;
 }
 span,p{
@@ -24,6 +24,7 @@ span,p{
 	width: 100%;
 	margin: 30px auto 30px auto;
 }
+
 .espacio_secciones{
 	margin: 50px auto;
 }
@@ -143,6 +144,7 @@ span,p{
 	font-size: 27px;
 	color: #565656;
 }
+
 #div_parrafo_seccion_video{
 	margin: 75px auto;
 }
@@ -177,6 +179,7 @@ span,p{
 #rosa{
 	color: #ea008a;
 }
+
 #div_contenedor_texto_derecho_formulario{
 	margin-top: 40%;
 }
@@ -251,10 +254,11 @@ span,p{
 #div_parrafo_inferior_formulario{
 	margin: 15px auto;
 }
-.form-inline{
+/* .form-inline{
 	max-width: 400px;
 	margin: auto;
-}
+} */
+
 .form-group{
 	display: block !important;
 	text-align: right !important;
