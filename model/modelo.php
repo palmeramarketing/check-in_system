@@ -112,13 +112,18 @@ class Modelo
 		}
 	}
 
+	function imprimir_gafete($email){
+		$pdf = new PDF_generator();
+		$pdf->imprimir_gafete($email);	
+	}
+
 	function guardar_certificado($data, $archivo){
 		$conexion = new Recursos();
 		$file_data = file_get_contents($archivo['tmp_name']);
 		$insert = "INSERT INTO certificado (id_evento,nombre_certificado,data_html)
 					VALUES ('".$data["id_evento"]."','".$data["nombre"]."','$file_data')";
 		return $conexion->sql_insert_update($insert);
-  }
+    }
 
 	function login($correo, $clave){
 		$conexion = new Recursos();
