@@ -26,7 +26,7 @@ switch ($_POST["accion"]) {
 		break;
 
 	case 'imprimir_certificado':
-		$modelo->imprimir_certificado($_POST["cod_part"],true);
+		$modelo->imprimir_certificado($_POST,true);
 		break;
 
 	case 'login':
