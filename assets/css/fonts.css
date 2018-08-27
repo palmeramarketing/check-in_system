@@ -1,0 +1,34 @@
+@font-face {
+	font-family: 'FoundrySterling-Medium';
+	src: local('?'), url('../fonts/FoundrySterlingMedium.woff') format('woff'), url('../fonts/FoundrySterlingMedium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FoundrySterling-BoldOSF';
+	src: local('?'), url('../fonts/FoundrySterlingBoldOSF.woff') format('woff'), url('../fonts/FoundrySterlingBoldOSF.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FoundrySterling-Light';
+	src: local('?'), url('../fonts/FoundrySterling-Light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FoundrySterling-Book';
+	src: local('?'), url('../fonts/FoundrySterling-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-Medium';
+	src: local('?'), url('../fonts/Raleway-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
