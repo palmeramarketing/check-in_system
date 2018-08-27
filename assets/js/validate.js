@@ -102,20 +102,64 @@ $("#form_register").validate({
 										dataType: "json",
 										success : function(result) {
 											 if(result == 404){
-												 $("#resultado").hide();
-												 $("#modalRegistro").modal('show');
-												 $("#correo").val('');
-												 $("#registrarse").on("click", function(){
-													 $("#modalRegistro").modal('hide');
+												 //imagen header
+												 $("#imagen_header").hide();
+												 $("#imagen_header_bienvenido").hide();
+												 $("#imagen_header_registro").hide();
+												 $("#imagen_header_error").show();
+
+												 //input
+												 $("#correo").addClass("error");
+
+												 //texto
+												 $("#div_busqueda").hide();
+												 $("#div_bienvenido").hide();
+												 $("#div_error").show();
+
+												 //botones
+												 $("#buscar").hide();
+												 $("#continuar").hide();
+												 $("#regresar").show();
+												 $("#regisDatos").show();
+
+
+												 $("#regresar").on("click", function(){
+													 //imagen header
+													 $("#imagen_header").show();
+													 $("#imagen_header_bienvenido").hide();
+													 $("#imagen_header_error").hide();
+
+													 //input
+													 $("#correo").val("");
+													 $("#correo").removeClass("error");
+
+													 //texto
+													 $("#div_busqueda").show();
+													 $("#div_bienvenido").hide();
+													 $("#div_error").hide();
+
+													 //botones
+													 $("#buscar").show();
+													 $("#continuar").hide();
+													 $("#regresar").hide();
+													 $("#regisDatos").hide();
+												 });
+												 $("#regisDatos").on("click", function(){
+													 //imagen header
+													 $("#imagen_header").hide();
+													 $("#imagen_header_bienvenido").hide();
+													 $("#imagen_header_registro").show();
+													 $("#imagen_header_error").hide();
+
 													 $("#formBusqueda").hide();
 													 $("#formRegistro").show();
 
-												 });
-												 $("#noregistrarse").on("click", function(){
-														 $("#modalRegistro").modal('hide');
-														 $("#formRegistro").hide();
+
 												 });
 											 }else{
+												 $("#imagen_header").hide();
+												 $("#imagen_header_bienvenido").show();
+												 $("#imagen_header_error").hide();
 												 $("#label_nombre").html(result.nombre);
 												 $("#label_primer_apellido").html(result.apellido_1);
 												 $("#label_segundo_apellido").html(result.apellido_2);
