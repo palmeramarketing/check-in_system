@@ -40,5 +40,14 @@ class PDF_generator
 		$mpdf->Output();
 	}
 
+	function imprimir_gafete($email){
+		$gafete = file_get_contents('../gafetes/html_gafete.html');
+		$html = str_replace("@name", $email, $gafete);
+		$mpdf = new Mpdf();
+		$mpdf->WriteHTML($html);
+		$mpdf->SetJS('this.print();');
+		$mpdf->Output();
+	}
+
 }
 ?>
