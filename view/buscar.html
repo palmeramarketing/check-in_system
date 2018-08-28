@@ -24,102 +24,121 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
-					<div id="imagen_header_logo" class="centrar">
-						<img src="../assets/images/logo_header.png" alt="">
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
 					<div id="imagen_header">
-						<img src="../assets/images/header.png" alt="" width="100%">
+						<img src="../assets/images/baner_check-in.jpg" alt="" width="100%">
+					</div>
+					<div id="imagen_header_bienvenido" style="display:none" >
+						<img src="../assets/images/Web_Found.jpg" alt="" width="100%">
+					</div>
+					<div id="imagen_header_error" style="display:none">
+						<img src="../assets/images/Web_Not-Found.jpg" alt="" width="100%">
+					</div>
+					<div id="imagen_header_registro" style="display:none">
+						<img src="../assets/images/Web_Registro.jpg" alt="" width="100%">
 					</div>
 				</div>
 			</div>
 
-      <div class="row background_azul" id="formBusqueda"  >
+      <div class="row " id="formBusqueda"  >
         <div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
 					<div id="div_contenedor_formulario">
-						<div id="div_parrafo_superior_formulario" class="centrar">
-							<p class="text_book p_texto_blanco">
-								Chequeate aqui para poder disfrutar <br>de increíbles ponencias <br>en nuestro Business Lounge
+						<div id="div_busqueda" class="div_parrafo_superior_formulario centrar">
+							<p class="text_medium p_texto_morado">
+								Ingrese su correo electrónico para verificar<br> si estas inscrito en la base de datos.
+							</p>
+							<br>
+							<p class="text_medium p_texto_pequeno">
+								De lo contrario, podrá registarse de inmediato!
+							</p>
+						</div>
+						<div id="div_bienvenido" class="div_parrafo_superior_formulario centrar" style="display: none">
+							<p class="text_medium p_texto_morado">
+								El correo electrónico fué encontrado exitosamente.
+							</p>
+							<br>
+							<p class="text_medium p_texto_morado" style="color: #00bf24">
+								!BIENVENIDO!
+							</p>
+						</div>
+						<div id="div_error" class="div_parrafo_superior_formulario centrar" style="display: none">
+							<p class="text_medium p_texto_morado">
+								El correo electrónico no fué encontrado en nuestra base de datos.
 							</p>
 						</div>
             <form class="form-horizontal" id="frm" method="post" target="_self">
-                <input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
+                <input class=" inputCheck" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
               <div class="center-button">
-                <input class="btn button-form" name=enviar tabindex=8 type=submit value=Buscar>
+                <input class="btn button-form" id="buscar" name=enviar tabindex=8 type=submit value=Buscar>
               </div>
             </form>
+						<input class="btn button-form" id="continuar" style="background: #00bf24; display:none" type=button value=Continuar>
+						<input class="btn button-form" id="regresar"  style="display:none" type=button value=Regresar>
+						<input class="btn button-form" id="regisDatos" style="display:none" type=button value="Registrar datos" >
           </div>
 
 
-          <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" id=resultado style="display:none">
-
-						<table class="table table-responsive div_table" style="color: #fff ">
-								<tbody>
-									<!-- Aplicadas en las filas -->
-									<tr>
-										<th style="vertical-align:middle">Nombre</th>
-										<th style="vertical-align:middle">Primer apellido</th>
-										<th style="vertical-align:middle">Segundo apellido</th>
-										<th style="vertical-align:middle">Especilidad</th>
-										<th style="vertical-align:middle">Número colegiado</th>
-										<th style="vertical-align:middle">Celular</th>
-										<th style="vertical-align:middle">Email</th>
-										<th style="vertical-align:middle">Ciudad</th>
-										<th style="vertical-align:middle">País</th>
-										<th style="vertical-align:middle">Dirección clinica/hospital</th>
-										<th style="vertical-align:middle">Teléfono</th>
-									</tr>
-
-									<!-- Aplicadas en las celdas (<td> o <th>) -->
-									<tr>
-										<td style="vertical-align:middle" class="text_blue"><p id="label_nombre"> </p></td>
-										<td style="vertical-align:middle"><p id="label_primer_apellido"> </p></td>
-										<td style="vertical-align:middle"><p id="label_segundo_apellido"> </p></td>
-										<td style="vertical-align:middle"><p id="label_especialidad"> </p></td>
-										<td style="vertical-align:middle"><p id="label_nun_colegiado"> </p></td>
-										<td style="vertical-align:middle"><p id="label_celular"> </p></td>
-										<td style="vertical-align:middle"><p id="label_email"> </p></td>
-										<td style="vertical-align:middle"><p id="label_ciudad"> </p></td>
-										<td style="vertical-align:middle"><p id="label_pais"> </p></td>
-										<td style="vertical-align:middle"><p id="label_direccion_clinica"> </p></td>
-										<td style="vertical-align:middle"><p id="label_telefono"> </p></td>
-									</tr>
-								</tbody>
-							</table>
-          </div>
         </div>
       </div>
 
-      <div class="row background_azul" id="formRegistro" style="display:none">
+      <div class="row" id="formRegistro" style="display:none">
         <div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
 					<div id="div_contenedor_formulario">
 						<div id="div_parrafo_superior_formulario" class="centrar">
-							<p class="text_book p_texto_blanco">
-								Regístrate ya y disfruta <br>de éstas increíbles ponencias <br>en nuestro Business Lounge
+							<p class="text_book p_texto_gris">
+								Complete sus datos para asistir
 							</p>
 						</div>
 						<form class="form-horizontal" method="post" id="form_register">
-	            <input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
-	            <input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
-	            <input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
-	            <input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
-	            <input class="form-control input-form" type="text" tabindex="5" placeholder="No. COLEGIADO:" name="colegiado" id="colegiado" />
-	            <input class="form-control input-form" type="text" tabindex="6" placeholder="No. CELULAR:" name="celular" id="celular" />
-	            <input class="form-control input-form" type="text" tabindex="7" placeholder="EMAIL:" name="email" id="email" />
-	            <input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
-	            <input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
-	            <input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
-	            <input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
-							<input type="hidden" name="url" id="url" value="../controller/controller.php">
-							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
-							<input type="hidden" value="150" name="id_evento" id="id_evento">
-							<input type="hidden" value="Con asistencia" name="asistencia" id="asistencia">
-	            <div class="center-button">
-	            	<button type="submit" class="btn button-form">CONFIRMAR</button>
-	            </div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+	            	<input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+	            	<input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+			        	<input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="5" placeholder="No. COLEGIADO:" name="colegiado" id="colegiado" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="6" placeholder="No. CELULAR:" name="celular" id="celular" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="7" placeholder="EMAIL:" name="email" id="email" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
+							</div>
+								<input type="hidden" name="url" id="url" value="../controller/controller.php">
+								<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias_checkin.html"/>
+								<input type="hidden" value="150" name="id_evento" id="id_evento">
+								<input type="hidden" value="Con asistencia" name="asistencia" id="asistencia">
+							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
+		            <div class="center-button">
+		            	<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="9" class="ui-corner-all"><span class="span_terminos">Acepto las políticas de manejo de datos</span></center>
+		            </div>
+							</div>
+							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
+		            <div class="center-button">
+		            	<button type="submit" class="btn button-form" style="background: #2c4c72" >Completar Registro</button>
+									<div >
+										<a id="volver" class="text_medium p_texto_morado centrar">< Regresar</a>
+									</div>
+		            </div>
+							</div>
 		        </form>
 					</div>
         </div>
@@ -132,71 +151,6 @@
         </div>
       </div>
 
-      <div class="modal fade"  role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalAsistencia">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Confirmar asistencia</h4>
-            </div>
-            <div class="modal-body">
-              <p>Desea asistir al evento?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" id="confimar">Si</button>
-              <button type="button" class="btn btn-primary" id="noconfirmar">No</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade"  role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalRegistro">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Confirmar registro</h4>
-            </div>
-            <div class="modal-body">
-              <p>Disculpe usted no se encuentra registrado en el evento. Desea desea realizar el registro?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" id="registrarse">Si</button>
-              <button type="button" class="btn btn-primary" id="noregistrarse">No</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-			<div class="row content-footer" id="row_footer">
-				<div>
-					<div class="col-xs-12 col-sm-3 col-md-3">
-						<img src="../assets/images/logo_footer.png" class="img-responsive logo-header">
-					</div>
-					<div class="col-xs-12 col-sm-9 col-md-8 col-md-offset-1">
-						<div class="row">
-							<div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-								<div class="a"><a target="_blank" href="https://www.facebook.com/candwbusiness"><img src="../assets/images/C&W_Landing_FB.png" class="img-responsive logo-header"><span>candwbusiness</span></a></div>
-							</div>
-							<div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-								<div class="a"><a target="_blank" href="https://twitter.com/CandWBusiness"><img src="../assets/images/C&W_Landing_TW.png" class="img-responsive logo-header"><span>@CandWBusiness</span></a></div>
-							</div>
-							<div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-								<div class="a"><a target="_blank" href="https://vimeo.com/cwbusiness"><img src="../assets/images/C&W_Landing_YT.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>
-							</div>
-							<div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
-								<div class="a"><a target="_blank" href="https://www.linkedin.com/company/c&w-business"><img src="../assets/images/logo_linkedin.png" class="img-responsive logo-header"><span>C&W Business</span></a></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 a">
-								<p class="a text-center">Bogotá, Calle 108 45-30 Torre 3, Piso 7-9 y 10, Edif. Paralelo 108. Teléfono: +5714291400.</p>
-								<p class="a text-center"><a href="http://palmera.marketing/wp-content/uploads/2018/05/Notice_of_Privacy.pdf" target="_blank" style="text-decoration:none;font-size: 12px; ">Aviso de Privacidad - Protección de datos personales Palmera Marketing S.A.S.</a></p>
-							</div>
-						</div>
-				 </div>
-			 </div>
-		 </div>
 
     </div>
 

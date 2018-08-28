@@ -150,14 +150,14 @@ session_start();
                   <div class="div_texto_conferencista">
                     <span class="negrita mayuscula span_nombres gris">Guillermo Uzcátegui</span><br>
                     <p class="p_texto_conferencista gris">
-                      Director de Ingeniería para Caribe, Centro América y países Andinos, con 24 años de experiencia en la industria, 18 años trabajando para Cisco en diversos roles, tanto en América Latina como en Europa.  
+                      Director de Ingeniería para Caribe, Centro América y países Andinos, con 24 años de experiencia en la industria, 18 años trabajando para Cisco en diversos roles, tanto en América Latina como en Europa.
                     </p>
                     <div style="width: 100%; text-align: right; margin-left:-60px;"><button type="button" class="btn btn-link negrita span_leer_mas" data-toggle="modal" data-target="#myModal_2">Leer más</button></div>
                   </div>
                 </div>
               </div>
             </div>
-          
+
             <div class="item">
               <div class="row">
                 <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
@@ -169,7 +169,7 @@ session_start();
                   <div class="div_texto_conferencista">
                     <span class="negrita mayuscula span_nombres gris">Robert Landires</span><br>
                     <p class="p_texto_conferencista gris">
-                      Consultor de Cisco en Redes Empresariales para Caribe, Centro América y países Andinos. Mas de 13 años de experiencia en la industria y 7 años de experiencia, trabajando para Cisco en diversos roles.  
+                      Consultor de Cisco en Redes Empresariales para Caribe, Centro América y países Andinos. Mas de 13 años de experiencia en la industria y 7 años de experiencia, trabajando para Cisco en diversos roles.
                     </p>
                     <div style="width: 100%; text-align: right; margin-left:-60px;"><button type="button" class="btn btn-link negrita span_leer_mas" data-toggle="modal" data-target="#myModal_3">Leer más</button></div>
                   </div>
@@ -191,7 +191,7 @@ session_start();
 	  	<!-- Modal -->
 	    <div class="modal fade" id="myModal_1" role="dialog">
 	      <div class="modal-dialog">
-	      
+
 	        <!-- Modal content-->
 	        <div class="modal-content">
 	          <div class="modal-header">
@@ -209,14 +209,14 @@ session_start();
 	            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 	          </div>
 	        </div>
-	        
+
 	      </div>
 	    </div>
 
 	    <!-- Modal -->
 	    <div class="modal fade" id="myModal_2" role="dialog">
 	      <div class="modal-dialog">
-	      
+
 	        <!-- Modal content-->
 	        <div class="modal-content">
 	          <div class="modal-header">
@@ -225,11 +225,11 @@ session_start();
 	          </div>
 	          <div class="modal-body">
 	            <p class="p_texto_conferencista gris">
-	              Director de Ingeniería para Caribe, Centro América y países Andinos, con 24 años de experiencia en la industria, 18 años trabajando para Cisco en diversos roles, tanto en América Latina como en Europa.  
+	              Director de Ingeniería para Caribe, Centro América y países Andinos, con 24 años de experiencia en la industria, 18 años trabajando para Cisco en diversos roles, tanto en América Latina como en Europa.
 								<br>
-								Durante la última década estuvo a cargo de la expansión en la región de Centro América y Caribes de proveedores de “Managed Services” definiendo la oferta de servicios y el modelo de operación en países como Panamá, Guatemala y Rep. Dominicana.  
+								Durante la última década estuvo a cargo de la expansión en la región de Centro América y Caribes de proveedores de “Managed Services” definiendo la oferta de servicios y el modelo de operación en países como Panamá, Guatemala y Rep. Dominicana.
 								<br>
-								En el 2017 se une a una de las top 5 compañías de Cyber Seguridad en el mundo, Fortinet,  para atender y desarrollar el mercado de proveedores de servicios y telco´s debido el impacto que pueden tener en la seguridad con su importante numero de clientes corporativos y de consumo.  
+								En el 2017 se une a una de las top 5 compañías de Cyber Seguridad en el mundo, Fortinet,  para atender y desarrollar el mercado de proveedores de servicios y telco´s debido el impacto que pueden tener en la seguridad con su importante numero de clientes corporativos y de consumo.
 								<br>
 								Actualmente es Director Regional de Ingeniaría de Ventas en LATAM para CW Business. Lidera el equipo regional d
 								e expertos que trabaja directamente con los clientes, enfocados en entender las necesidades del negocio para organizaciones de todos los tamaños, y en el asesoramiento en procesos complejos de transformación y adopción de TI. Tiene un MBA y es Ingeniero Sistemas, con varios estudios de postgrados en alta gerencia y dirección estratégica, cuenta con diversas certificaciones de reconocimiento internacional en la industria de TI. Es un orador frecuente en conferencias internacionales y eventos regionales sobre los temas de ciberseguridad, servicios en la nube y mejores prácticas en proceso de transformación.
@@ -239,14 +239,14 @@ session_start();
 	            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 	          </div>
 	        </div>
-	        
+
 	      </div>
 	    </div>
 
 	    <!-- Modal -->
 	    <div class="modal fade" id="myModal_3" role="dialog">
 	      <div class="modal-dialog">
-	      
+
 	        <!-- Modal content-->
 	        <div class="modal-content">
 	          <div class="modal-header">
@@ -255,11 +255,11 @@ session_start();
 	          </div>
 	          <div class="modal-body">
 	            <p class="p_texto_conferencista gris">
-	              Consultor de Cisco en Redes Empresariales para Caribe, Centro América y países Andinos. Mas de 13 años de experiencia en la industria y 7 años de experiencia, trabajando para Cisco en diversos roles.  
+	              Consultor de Cisco en Redes Empresariales para Caribe, Centro América y países Andinos. Mas de 13 años de experiencia en la industria y 7 años de experiencia, trabajando para Cisco en diversos roles.
 								<br>
-								Durante la última década estuvo a cargo de la expansión en la región de Centro América y Caribes de proveedores de “Managed Services” definiendo la oferta de servicios y el modelo de operación en países como Panamá, Guatemala y Rep. Dominicana.  
+								Durante la última década estuvo a cargo de la expansión en la región de Centro América y Caribes de proveedores de “Managed Services” definiendo la oferta de servicios y el modelo de operación en países como Panamá, Guatemala y Rep. Dominicana.
 								<br>
-								En el 2017 se une a una de las top 5 compañías de Cyber Seguridad en el mundo, Fortinet,  para atender y desarrollar el mercado de proveedores de servicios y telco´s debido el impacto que pueden tener en la seguridad con su importante numero de clientes corporativos y de consumo.  
+								En el 2017 se une a una de las top 5 compañías de Cyber Seguridad en el mundo, Fortinet,  para atender y desarrollar el mercado de proveedores de servicios y telco´s debido el impacto que pueden tener en la seguridad con su importante numero de clientes corporativos y de consumo.
 								<br>
 								Actualmente es Director Regional de Ingeniaría de Ventas en LATAM para CW Business. Lidera el equipo regional d
 								e expertos que trabaja directamente con los clientes, enfocados en entender las necesidades del negocio para organizaciones de todos los tamaños, y en el asesoramiento en procesos complejos de transformación y adopción de TI. Tiene un MBA y es Ingeniero Sistemas, con varios estudios de postgrados en alta gerencia y dirección estratégica, cuenta con diversas certificaciones de reconocimiento internacional en la industria de TI. Es un orador frecuente en conferencias internacionales y eventos regionales sobre los temas de ciberseguridad, servicios en la nube y mejores prácticas en proceso de transformación.
@@ -285,7 +285,7 @@ session_start();
 			    		<div id="div_boton_asistir">
 			    			<a href="#form_background"><button class="btn" id="boton_asistir"><span class="mayuscula negrita text_helvetica" id="span_texto_boton">ASISTIR</span></button></a>
 			    		</div>
-			    	</div>	
+			    	</div>
 		    	</div>
 		    </div>
 		    <div class="row">

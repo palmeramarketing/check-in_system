@@ -100,12 +100,10 @@ class Modelo
 		$id_evento= $datos["id_evento"];
 		$codigo= $datos["cod_part"];
 		$select = "SELECT *
-							FROM participantes par
-							INNER JOIN clave_participante clave
-							ON par.id = clave.id_participante
-							INNER JOIN certificado cer
-							ON clave.id_evento = cer.id_evento
-							WHERE par.email= '$codigo' or par.colegiado='$codigo' and clave.id_evento=$id_evento";
+								FROM participantes par
+								INNER JOIN certificado cer
+								ON cer.id_evento = $id_evento
+								WHERE par.email= '$codigo' or par.colegiado='$codigo'";
 
 		$datos = $conexion->sql_select($select);
 		if ($imprimir) {
