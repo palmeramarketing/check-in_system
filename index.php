@@ -32,7 +32,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
 					<div id="imagen_header_logo" class="centrar">
-						<img src="assets/images/logo_mena.png" alt="" height="150px" width="150px"  >
+						<img src="assets/images/menarini_icon.jpg" alt="" height="150px" width="150px"  >
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 							<b>IX Simposium de Centroamérica y el Caribe De actualización en Odontología</b>
 						</p>
 						<br>
-						<a href="view/inicio.php" class="text_medium p_texto_morado centrar">Ingresar</a>
+						<a href="view/buscar.html" class="text_medium p_texto_morado centrar">Ingresar</a>
 					</div>
 				</div>
 			</div>

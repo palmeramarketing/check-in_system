@@ -66,7 +66,7 @@
 							</p>
 						</div>
             <form class="form-horizontal" id="frm" method="post" target="_self">
-                <input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
+                <input class=" inputCheck" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
               <div class="center-button">
                 <input class="btn button-form" id="buscar" name=enviar tabindex=8 type=submit value=Buscar>
               </div>
@@ -84,29 +84,61 @@
         <div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
 					<div id="div_contenedor_formulario">
 						<div id="div_parrafo_superior_formulario" class="centrar">
-							<p class="text_book p_texto_blanco">
-								Regístrate ya y disfruta <br>de éstas increíbles ponencias <br>en nuestro Business Lounge
+							<p class="text_book p_texto_gris">
+								Complete sus datos para asistir
 							</p>
 						</div>
 						<form class="form-horizontal" method="post" id="form_register">
-	            <input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
-	            <input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
-	            <input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
-	            <input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
-	            <input class="form-control input-form" type="text" tabindex="5" placeholder="No. COLEGIADO:" name="colegiado" id="colegiado" />
-	            <input class="form-control input-form" type="text" tabindex="6" placeholder="No. CELULAR:" name="celular" id="celular" />
-	            <input class="form-control input-form" type="text" tabindex="7" placeholder="EMAIL:" name="email" id="email" />
-	            <input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
-	            <input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
-	            <input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
-	            <input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
-							<input type="hidden" name="url" id="url" value="../controller/controller.php">
-							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
-							<input type="hidden" value="150" name="id_evento" id="id_evento">
-							<input type="hidden" value="Con asistencia" name="asistencia" id="asistencia">
-	            <div class="center-button">
-	            	<button type="submit" class="btn button-form">CONFIRMAR</button>
-	            </div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+	            	<input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+	            	<input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+			        	<input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="5" placeholder="No. COLEGIADO:" name="colegiado" id="colegiado" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="6" placeholder="No. CELULAR:" name="celular" id="celular" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="7" placeholder="EMAIL:" name="email" id="email" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
+							</div>
+							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
+								<input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
+							</div>
+								<input type="hidden" name="url" id="url" value="../controller/controller.php">
+								<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias_checkin.html"/>
+								<input type="hidden" value="150" name="id_evento" id="id_evento">
+								<input type="hidden" value="Con asistencia" name="asistencia" id="asistencia">
+							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
+		            <div class="center-button">
+		            	<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="9" class="ui-corner-all"><span class="span_terminos">Acepto las políticas de manejo de datos</span></center>
+		            </div>
+							</div>
+							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
+		            <div class="center-button">
+		            	<button type="submit" class="btn button-form" style="background: #2c4c72" >Completar Registro</button>
+									<div >
+										<a id="volver" class="text_medium p_texto_morado centrar">< Regresar</a>
+									</div>
+		            </div>
+							</div>
 		        </form>
 					</div>
         </div>
