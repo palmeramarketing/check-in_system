@@ -105,43 +105,110 @@ $("#form_register").validate({
 										dataType: "json",
 										success : function(result) {
 											 if(result == 404){
-												 $("#resultado").hide();
-												 $("#modalRegistro").modal('show');
-												 $("#correo").val('');
-												 $("#registrarse").on("click", function(){
-													 $("#modalRegistro").modal('hide');
+												 //imagen header
+												 $("#imagen_header").hide();
+												 $("#imagen_header_bienvenido").hide();
+												 $("#imagen_header_registro").hide();
+												 $("#imagen_header_error").show();
+
+												 //input
+												 $("#correo").addClass("error");
+
+												 //texto
+												 $("#div_busqueda").hide();
+												 $("#div_bienvenido").hide();
+												 $("#div_error").show();
+
+												 //botones
+												 $("#buscar").hide();
+												 $("#continuar").hide();
+												 $("#regresar").show();
+												 $("#regisDatos").show();
+
+
+												 $("#regresar").on("click", function(){
+													 //imagen header
+													 $("#imagen_header").show();
+													 $("#imagen_header_bienvenido").hide();
+													 $("#imagen_header_registro").hide();
+													 $("#imagen_header_error").hide();
+
+													 //input
+													 $("#correo").val("");
+													 $("#correo").removeClass("error");
+
+													 //texto
+													 $("#div_busqueda").show();
+													 $("#div_bienvenido").hide();
+													 $("#div_error").hide();
+
+													 //botones
+													 $("#buscar").show();
+													 $("#continuar").hide();
+													 $("#regresar").hide();
+													 $("#regisDatos").hide();
+												 });
+												 $("#regisDatos").on("click", function(){
+													 //imagen header
+													 $("#imagen_header").hide();
+													 $("#imagen_header_bienvenido").hide();
+													 $("#imagen_header_registro").show();
+													 $("#imagen_header_error").hide();
+
 													 $("#formBusqueda").hide();
 													 $("#formRegistro").show();
 
-												 });
-												 $("#noregistrarse").on("click", function(){
-														 $("#modalRegistro").modal('hide');
-														 $("#formRegistro").hide();
+
 												 });
 											 }else{
-												 $("#label_nombre").html(result.nombre);
-												 $("#label_primer_apellido").html(result.apellido_1);
-												 $("#label_segundo_apellido").html(result.apellido_2);
-												 $("#label_especialidad").html(result.especialidad);
-												 $("#label_nun_colegiado").html(result.colegiado);
-												 $("#label_celular").html(result.celular);
-												 $("#label_email").html(result.email);
-												 $("#label_ciudad").html(result.ciudad);
-												 $("#label_pais").html(result.pais);
-												 $("#label_direccion_clinica").html(result.direccion);
-												 $("#label_telefono").html(result.telefono);
-												 if(result.asistencia== "Con asistencia"){
-													 $("#correo").val('');
-													$("#resultado").show();
-												 }else {
-													 $("#modalAsistencia").modal('show');
-												 }
 
-												 $("#noconfirmar").on("click", function(){
-													 	 $("#correo").val('');
-														 $("#modalAsistencia").modal('hide');
-														 $("#resultado").hide();
-												 });
+												 $.ajax({
+													 url : "../controller/controller.php",
+													 data : {email: $("#correo").val(), accion: "actualizar_asistencia"},
+													 type : "POST",
+													 dataType: "json",
+													 success : function(result) {
+
+														 $("#imagen_header").hide();
+														 $("#imagen_header_registro").hide();
+														 $("#imagen_header_bienvenido").show();
+														 $("#imagen_header_error").hide();
+
+														 //texto
+														 $("#div_bienvenido").show();
+														 $("#div_busqueda").hide();
+														 $("#div_error").hide();
+
+															//botones
+															$("#continuar").show();
+															$("#buscar").hide();
+															$("#regresar").hide();
+															$("#regisDatos").hide();
+
+															$("#continuar").on("click", function(){
+																//imagen header
+																$("#imagen_header").show();
+																$("#imagen_header_bienvenido").hide();
+																$("#imagen_header_registro").hide();
+																$("#imagen_header_error").hide();
+
+																//input
+																$("#correo").val("");
+																$("#correo").removeClass("error");
+
+																//texto
+																$("#div_busqueda").show();
+																$("#div_bienvenido").hide();
+																$("#div_error").hide();
+
+																//botones
+																$("#buscar").show();
+																$("#continuar").hide();
+																$("#regresar").hide();
+																$("#regisDatos").hide();
+															});
+													 }
+												 })
 
 											 }
 
@@ -153,6 +220,30 @@ $("#form_register").validate({
 
 		 })
 
+		 $("#volver").on("click", function(){
+		 	//imagen header
+		 	$("#imagen_header").show();
+		 	$("#imagen_header_bienvenido").hide();
+		 	$("#imagen_header_registro").hide();
+		 	$("#imagen_header_error").hide();
+
+			$("#correo").val("");
+			$("#correo").removeClass("error");
+
+			//texto
+			$("#div_busqueda").show();
+			$("#div_bienvenido").hide();
+			$("#div_error").hide();
+
+			//botones
+			$("#buscar").show();
+			$("#continuar").hide();
+			$("#regresar").hide();
+			$("#regisDatos").hide();
+
+			$("#formBusqueda").show();
+			$("#formRegistro").hide();
+		 });
 
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm-login").validate(
@@ -193,23 +284,6 @@ $("#form_register").validate({
 
 		 })
 
-		 $("#confimar").on("click", function(){
-
-			 $.ajax({
-				 url : "../controller/controller.php",
-				 data : {email: $("#correo").val(), accion: "actualizar_asistencia"},
-				 type : "POST",
-				 dataType: "json",
-				 success : function(result) {
-
-					 $("#correo").val('');
-					 $("#modalAsistencia").modal('hide');
-					 $("#resultado").show();
-
-				 }
-			 })
-
-		 })
 
 		 $("#olvido_passw").on("click", function(){
 
