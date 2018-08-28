@@ -58,7 +58,8 @@ $("#form_register").validate({
 			direccion : $("#direccion").val(),
 			telefono : $("#telefono").val(),
 			id_evento : $("#id_evento").val(),
-			asistencia : $("#asistencia").val()
+			asistencia : $("#asistencia").val(),
+			id_usuario : $("#login_id").val()
 		};
 
 		var url= $("#url").val();

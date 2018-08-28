@@ -25,6 +25,8 @@ class Modelo
 		if ($result["status"] == 200) {
 			$clave = $datos["id_evento"]."-".$result["data"];
 
+			self::relacion_usuario_participante($datos["id_usuario"],$result["data"],$sql);
+
 			$resp = self::registrar_clave_participante($clave,$result["data"],$datos["id_evento"]);
 
 			if($resp["status"] = 200){
@@ -38,6 +40,12 @@ class Modelo
 			$result = $sql->sql_insert_update($update);
 			return $result;
 		}
+	}
+
+	function relacion_usuario_participante($id_usuario, $id_participante, $conexion){
+		$sql = "INSERT INTO usuario_participante (fk_usuario,fk_participante)
+				VALUES ('$id_usuario','$id_participante')";
+		$conexion->sql_insert_update($sql);
 	}
 
 	function registrar_participante_sistema_eventos($datos, $conexion){
@@ -210,8 +218,9 @@ class Modelo
 
     function registrar_usuario($datos){
     	$conexion = new Recursos();
+    	$nuevaclave= md5($datos["password"]);
 			$sql = "INSERT INTO usuario (email, nombre, password, tipo, estatus)
-			VALUES ('".$datos["email"]."','".$datos["usuario"]."','".$datos["password"]."', 'admin', 1)";
+			VALUES ('".$datos["email"]."','".$datos["usuario"]."','$nuevaclave', 'admin', 1)";
     	return $conexion->sql_insert_update($sql);
     }
 
@@ -221,12 +230,12 @@ class Modelo
     	return $conexion->sql_insert_update($sql);
     }
 
-		function deshabilitar_usuario($datos){
-			$conexion = new Recursos();
-			$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
-			$ejecutar= $conexion->sql_insert_update($sql);
-			return $ejecutar;
-		}
+	function deshabilitar_usuario($datos){
+		$conexion = new Recursos();
+		$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
+		$ejecutar= $conexion->sql_insert_update($sql);
+		return $ejecutar;
+	}
 
 	function envioCorreo($email) {
 	  	$mail = new PHPMailer;
