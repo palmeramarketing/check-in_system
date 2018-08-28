@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Progress Bar</title>
+    <meta charset="utf-8" />
+    <style>
+        #progress {
+            position:relative;
+            width:25px;
+            height:100px;
+            border:2px solid #000;
+            background-color:#ccc;
+        }
+        #progress div {
+            position:absolute;
+            bottom:0;
+            height:0;
+            width:25px;
+            background-color:#f00;
+        }
+        span {
+            margin:10px auto;
+        }
+    </style>
+    <script src="assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            // Define your variables
+            var interval=10;
+            var half=50;
+            var max=100;
+            var texts=['Less then 50...','More then 50!'];
+            var upButton=$('button[name="up"]');
+            var downButton=$('button[name="down"]');
+            var bar=$('#progress').find('div');
+            upButton.on('click',function(){
+                var height=bar.height();
+                if(height>=0 && height<max) {
+                    var newHeight=parseFloat(height+interval,10);
+                    bar.css('height',newHeight);
+                    $('span').hide().text((newHeight<half) ? texts[0] : texts[1]).fadeIn();
+                }
+            });
+            downButton.on('click',function(){
+                var height=bar.height();
+                if(height>0 && height<=max) {
+                    var newHeight=parseFloat(height-interval,10);
+                    bar.css('height',newHeight);
+                    $('span').hide().text((newHeight<half) ? texts[0] : texts[1]).fadeIn();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Progress Bar</h1>
+    <p>
+        <button name="up">Add</button> <button name="down">Remove</button>
+    </p>
+    <div id="progress">
+        <div>&nbsp;</div>
+    </div>
+    <span></span>
+</body>
+<br><br><br>
+
+<div id="progressbar"></div>
+<script>
+    $("#progressbar").progressbar({
+      value: 0,
+      max : 5  
+    });
+
+    var value = 0,
+        progress;
+
+    function stopProgress() {
+      clearInterval(progress);
+      $("#progressbar").progressbar({
+         value : 0
+      });
+    }
+
+    progress = setInterval(function() {
+      value++; 
+      $("#progressbar").progressbar({
+        value : value
+      });
+      if (value == 5) clearInterval(progress);
+    }, 1000);
+
+    $(window).on('click', function() {
+       stopProgress();
+    });    
+</script>
+</html>

@@ -1,26 +1,15 @@
 <?php
-require_once("../db/conexion.php");
-include "../model/modelo.php";
 
 session_start();
   if (isset($_REQUEST["login"])){
     $_SESSION["login"] = $_REQUEST["login"];
-    $modelo = new Modelo();
-    $user= $modelo->buscarUsuario($_SESSION["login"]);
-    $logeo= $user["logeado"];
-    if($logeo == 0){
-      header("Location: login.html");
-      exit;
-    }
-
-  }else if (!isset($_SESSION["login"]) && ($logeo == '0')) {
+  } elseif (!isset($_SESSION["login"])) {
     header("Location: login.html");
     exit;
   }
 
-
 ?>
-
+<input type="hidden" id="login_id" name="login_id" value="<?php echo $_SESSION['login']; ?>">
 <!DOCTYPE html>
 <html lang=es>
 	 <head>

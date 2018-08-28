@@ -8,10 +8,11 @@
 </head>
 <style>
 	@media print {
+		@page { margin: 0; }
 	  body * {
 	    display: none;
 	  }
-	  body #resultado {
+	  #resultado {
 	    display: block;
 	  }
 	}
@@ -26,7 +27,7 @@
 				<div style="margin: 25px auto 50px auto;">
 					<input type="button" id="imprimir_imagen_gafete" value="Imprimir Imagen Gafete">
 				</div>
-				<div id="resultado">
+				<div id="resultado" style="width: 100%;">
 					
 				</div><br><br>
 			</div>
