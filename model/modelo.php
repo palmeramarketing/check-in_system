@@ -18,18 +18,20 @@ class Modelo
 		if ($registro["status"] != 200) {
 			return $registro;
 		}
-		$insert = "INSERT INTO participantes (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono)
-					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."')";
+		$insert = "INSERT INTO participantes (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono,asistencia)
+					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."','".$datos["asistencia"]."')";
 		$result = $sql->sql_insert_update($insert);
 
 		if ($result["status"] == 200) {
 			$clave = $datos["id_evento"]."-".$result["data"];
 
+			self::relacion_usuario_participante($datos["id_usuario"],$result["data"],$sql);
+
 			$resp = self::registrar_clave_participante($clave,$result["data"],$datos["id_evento"]);
 
 			if($resp["status"] = 200){
 
-				$envioEmail= self::envioCorreo($datos["email"], $clave);
+				$envioEmail= self::envioCorreo($datos["email"]);
 				return $result;
 			}
 
@@ -38,6 +40,12 @@ class Modelo
 			$result = $sql->sql_insert_update($update);
 			return $result;
 		}
+	}
+
+	function relacion_usuario_participante($id_usuario, $id_participante, $conexion){
+		$sql = "INSERT INTO usuario_participante (fk_usuario,fk_participante)
+				VALUES ('$id_usuario','$id_participante')";
+		$conexion->sql_insert_update($sql);
 	}
 
 	function registrar_participante_sistema_eventos($datos, $conexion){
@@ -87,15 +95,17 @@ class Modelo
 		}
 	}
 
-	function imprimir_certificado($codigo, $imprimir = false){
+	function imprimir_certificado($datos, $imprimir = false){
 		$conexion = new Recursos();
+		$id_evento= $datos["id_evento"];
+		$codigo= $datos["cod_part"];
 		$select = "SELECT *
-					FROM clave_participante clave
-					INNER JOIN participantes par
-					ON clave.id_participante = par.id
-					INNER JOIN certificado cer
-					ON cer.id_evento = clave.id_evento
-					WHERE clave.clave = '$codigo'";
+							FROM participantes par
+							INNER JOIN clave_participante clave
+							ON par.id = clave.id_participante
+							INNER JOIN certificado cer
+							ON clave.id_evento = cer.id_evento
+							WHERE par.email= '$codigo' or par.colegiado='$codigo' and clave.id_evento=$id_evento";
 
 		$datos = $conexion->sql_select($select);
 		if ($imprimir) {
@@ -110,13 +120,18 @@ class Modelo
 		}
 	}
 
+	function imprimir_gafete($email){
+		$pdf = new PDF_generator();
+		$pdf->imprimir_gafete($email);	
+	}
+
 	function guardar_certificado($data, $archivo){
 		$conexion = new Recursos();
 		$file_data = file_get_contents($archivo['tmp_name']);
 		$insert = "INSERT INTO certificado (id_evento,nombre_certificado,data_html)
 					VALUES ('".$data["id_evento"]."','".$data["nombre"]."','$file_data')";
 		return $conexion->sql_insert_update($insert);
-  }
+    }
 
 	function login($correo, $clave){
 		$conexion = new Recursos();
@@ -203,8 +218,9 @@ class Modelo
 
     function registrar_usuario($datos){
     	$conexion = new Recursos();
+    	$nuevaclave= md5($datos["password"]);
 			$sql = "INSERT INTO usuario (email, nombre, password, tipo, estatus)
-			VALUES ('".$datos["email"]."','".$datos["usuario"]."','".$datos["password"]."', 'admin', 1)";
+			VALUES ('".$datos["email"]."','".$datos["usuario"]."','$nuevaclave', 'admin', 1)";
     	return $conexion->sql_insert_update($sql);
     }
 
@@ -214,14 +230,14 @@ class Modelo
     	return $conexion->sql_insert_update($sql);
     }
 
-		function deshabilitar_usuario($datos){
-			$conexion = new Recursos();
-			$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
-			$ejecutar= $conexion->sql_insert_update($sql);
-			return $ejecutar;
-		}
+	function deshabilitar_usuario($datos){
+		$conexion = new Recursos();
+		$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
+		$ejecutar= $conexion->sql_insert_update($sql);
+		return $ejecutar;
+	}
 
-	function envioCorreo($email, $codigo) {
+	function envioCorreo($email) {
 	  	$mail = new PHPMailer;
 		$mail->setFrom('info@cwc.com', 'MENARINI');
 		$mail->addAddress($email,'');
@@ -776,12 +792,6 @@ class Modelo
 		                          <td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #232327;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
 		                          <div style="width: 100%; text-align: center;">
 		                            <p style="text-align: center; font-size: 25pt">GRACIAS POR SU <br> REGISTRO</p>
-		                          </div>
-		                          <div style="width: 100%; text-align: center;">
-		                            <p style="text-align: center; font-size: 20pt"> Su codigo de validacion para imprimir su certificado es el siguiente:</p>
-		                          </div>
-		                          <div style="width: 100%; text-align: center;">
-		                            <p style="color: #adadad; text-align: center; font-size: 25pt">'.$codigo.'</p>
 		                          </div>
 		                          </td>
 		                        </tr>

@@ -25,3 +25,10 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'Raleway-Medium';
+	src: local('?'), url('../fonts/Raleway-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

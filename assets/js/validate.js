@@ -27,7 +27,8 @@ $("#form_register").validate({
 	  ciudad:{required:!0,minlength:2},
 	  pais:{required:!0,minlength:2},
 	  direccion:{required:!0,minlength:7},
-	  telefono:{required:!0,minlength:2}
+	  telefono:{required:!0,minlength:2},
+	  terminos:{required:!0}
 	},
 	messages:{
 	  nombre:{},
@@ -40,7 +41,8 @@ $("#form_register").validate({
 	  ciudad:{},
 	  pais:{},
 	  direccion:{},
-	  telefono:{}
+	  telefono:{},
+	  terminos:{}
 	},
 	submitHandler: function() {
 		var datos = {
@@ -55,7 +57,9 @@ $("#form_register").validate({
 			pais : $("#pais").val(),
 			direccion : $("#direccion").val(),
 			telefono : $("#telefono").val(),
-			id_evento : $("#id_evento").val()
+			id_evento : $("#id_evento").val(),
+			asistencia : $("#asistencia").val(),
+			id_usuario : $("#login_id").val()
 		};
 
 		var url= $("#url").val();
@@ -115,8 +119,6 @@ $("#form_register").validate({
 														 $("#formRegistro").hide();
 												 });
 											 }else{
-												 $("#modalAsistencia").modal('show');
-
 												 $("#label_nombre").html(result.nombre);
 												 $("#label_primer_apellido").html(result.apellido_1);
 												 $("#label_segundo_apellido").html(result.apellido_2);
@@ -128,6 +130,12 @@ $("#form_register").validate({
 												 $("#label_pais").html(result.pais);
 												 $("#label_direccion_clinica").html(result.direccion);
 												 $("#label_telefono").html(result.telefono);
+												 if(result.asistencia== "Con asistencia"){
+													 $("#correo").val('');
+													$("#resultado").show();
+												 }else {
+													 $("#modalAsistencia").modal('show');
+												 }
 
 												 $("#noconfirmar").on("click", function(){
 													 	 $("#correo").val('');

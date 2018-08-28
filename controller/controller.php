@@ -26,7 +26,7 @@ switch ($_POST["accion"]) {
 		break;
 
 	case 'imprimir_certificado':
-		$modelo->imprimir_certificado($_POST["cod_part"],true);
+		$modelo->imprimir_certificado($_POST,true);
 		break;
 
 	case 'login':
@@ -55,6 +55,9 @@ switch ($_POST["accion"]) {
 
 	case 'deshabilitar_usuario':
 		echo json_encode($modelo->deshabilitar_usuario($_POST));
+    
+	case 'imprimir_gafete':
+		echo json_encode($modelo->imprimir_gafete($_POST["email"]));
 		break;
 
 	default:
