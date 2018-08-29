@@ -160,6 +160,9 @@ $("#form_register").validate({
 
 
 												 });
+											 }else if(result == 500){
+												 alert("Ha ocurrido un error interno. Por favor comuniquese con el administrador del sistema");
+												 return false;
 											 }else{
 
 												 $.ajax({
