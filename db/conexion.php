@@ -1,7 +1,7 @@
 <?php
 class Conexion{
 	private $conexion;
-	public function conectar_mysqli($user="root", $pass="", $db="checkin_system"){ 
+	public function conectar_mysqli($user="root", $pass="", $db="checkin-system"){ 
 		if(!isset($this->conexion)){
 			$this->conexion = new mysqli('localhost', $user, $pass, $db);
 			if (mysqli_connect_errno()){
