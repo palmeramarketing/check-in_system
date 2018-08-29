@@ -241,10 +241,9 @@ class Modelo
 		$mail->addAddress($email,'');
 		$mail->Subject = 'Codigo de Verificacion';
 		$mail->msgHTML('
-		<html lang="en">
+		<html lang="es">
 		<head>
 			<meta charset="UTF-8">
-			<title>Document</title>
 		</head>
 		<body style="font-family: Helvetica; margin: 0px;">
 			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" align="center">
@@ -266,7 +265,7 @@ class Modelo
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="middle" style=" background-image: url(../assets/images/fondo_asistir.jpg); background-repeat: no-repeat;  padding: 30px;">
+						<td align="center" valign="middle" style=" background-image: url(../assets/images/fondo_asistir.jpg);background-repeat: no-repeat fixed center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;">
 				    		<a href="https://www.facebook.com/MenariniCA/" target="_blank" style=" text-decoration: none; color: white;  margin: 2%;">
 					    		<img src="../assets/images/C&W_Landing_FB.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;">MenariniCA</span>
@@ -290,7 +289,7 @@ class Modelo
 				    	</td>
 					</tr>
 					<tr>
-						<td align="center" style="background: url(../assets/images/footer_web.jpg); background-repeat: no-repeat; padding: 20px;"><span><a href="http://www.menarini-ca.com/" style=" text-decoration: none; color: white; font-size: 40px;">www.menarini-ca.com</a></span>
+						<td align="center" style="background: url(../assets/images/footer_web.jpg); background-repeat: no-repeat fixed center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;"><span><a href="http://www.menarini-ca.com/" style=" text-decoration: none; color: white; font-size: 40px;">www.menarini-ca.com</a></span>
 						</td>
 					</tr>
 				</tbody>
