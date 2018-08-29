@@ -161,7 +161,7 @@ $("#form_register").validate({
 
 												 });
 											 }else{
-
+											 	imprimir_gafete(result);
 												 $.ajax({
 													 url : "../controller/controller.php",
 													 data : {email: $("#correo").val(), accion: "actualizar_asistencia"},
@@ -219,6 +219,34 @@ $("#form_register").validate({
 						}
 
 		 })
+
+			function imprimir_gafete(result){
+				$("#nombre_participante").css("display","block").text(result["nombre"]+" "+result["apellido_1"]);
+				var element = $("#nombre_participante");
+			  html2canvas(element, {
+			    onrendered: function (canvas) {
+			      getCanvas = canvas;
+			    	var img = canvas.toDataURL("image/png",1.0);
+			    	$("#div_img_gafete").css("display","block").html("<img id='Image' src=" + img + " style='width:100%;'></img>").ready(function(){
+				    	var htmlToPrint = '' +
+			        '<style type="text/css">' +
+						    '@media print {'+
+							  '@page { margin: 0; }'+
+							'}'+
+			        '</style>';
+			        htmlToPrint += $("#div_img_gafete").html();
+			        var tWindow = window.open("");
+			        $(tWindow.document.body)
+			          .html(htmlToPrint)
+			          tWindow.focus();
+			          tWindow.print();
+			          tWindow.close();
+			    	$("#div_img_gafete").css("display","none");
+			    	$("#nombre_participante").css("display","none");
+			    	});
+			    }
+			  });
+			}
 
 		 $("#volver").on("click", function(){
 		 	//imagen header
