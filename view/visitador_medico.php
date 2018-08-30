@@ -84,7 +84,7 @@ session_start();
               </div>
 							<input type="hidden" name="url" id="url" value="../controller/controller.php">
 							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
-							<input type="hidden" value="150" name="id_evento" id="id_evento">
+							<input type="hidden" value="16" name="id_evento" id="id_evento">
               <input type="hidden" value="Sin asistencia" name="asistencia" id="asistencia">
 	            <div class="center-button">
 	            	<button type="submit" class="btn button-form">ENVIAR</button>
