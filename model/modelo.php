@@ -54,6 +54,10 @@ class Modelo
 		$resp = $conexion->sql_insert_update($sql,true);
 		if ($resp["status"] == 1062) {
 			return self::update_participante_sistema_eventos($datos, $conexion);
+		}elseif ($resp["status"] == 200) {
+			$sql = "INSERT INTO evento_participante (id_evento,id_participante)
+				VALUES ('".$datos["id_evento"]."','".$resp["data"]."')";
+			$resp = $conexion->sql_insert_update($sql,true);
 		}
 		return $resp;
 	}
