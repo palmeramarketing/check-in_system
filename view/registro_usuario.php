@@ -232,5 +232,6 @@
    </body>
 	 <!-- JS -->
 	 <script src="../assets/js/validate.js"></script>
+	  <script src="../assets/js/registro_usuario.js"></script>
 
 </html>
