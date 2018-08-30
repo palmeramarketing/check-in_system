@@ -87,6 +87,81 @@ $("#form_register").validate({
 	  }
   });
 
+$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
+$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+$("#form_register_express").validate({
+	rules:{
+	  nombre:{required:!0,minlength:2},
+	  apellido_1:{required:!0,minlength:2},
+	  apellido_2:{required:!0,minlength:2},
+	  especialidad:{required:!0,minlength:2},
+	  colegiado:{required:!0,minlength:2},
+	  celular:{required:!0,minlength:2},
+	  email:{required:!0,betterEmail:!0},
+	  ciudad:{required:!0,minlength:2},
+	  pais:{required:!0,minlength:2},
+	  direccion:{required:!0,minlength:7},
+	  telefono:{required:!0,minlength:2},
+	  terminos:{required:!0}
+	},
+	messages:{
+	  nombre:{},
+	  apellido_1:{},
+	  apellido_2:{},
+	  especialidad:{},
+	  colegiado:{},
+	  celular:{},
+	  email:{},
+	  ciudad:{},
+	  pais:{},
+	  direccion:{},
+	  telefono:{},
+	  terminos:{}
+	},
+	submitHandler: function() {
+		var datos = {
+			nombre : $("#nombre").val(),
+			apellido_1 : $("#apellido_1").val(),
+			apellido_2 : $("#apellido_2").val(),
+			especialidad : $("#especialidad").val(),
+			colegiado : $("#colegiado").val(),
+			celular : $("#celular").val(),
+			email : $("#email").val(),
+			ciudad : $("#ciudad").val(),
+			pais : $("#pais").val(),
+			direccion : $("#direccion").val(),
+			telefono : $("#telefono").val(),
+			id_evento : $("#id_evento").val(),
+			asistencia : $("#asistencia").val(),
+			id_usuario : $("#login_id").val()
+		};
+
+		var url= $("#url").val();
+		var url_gracias= $("#url_gracias").val();
+		$.ajax({
+		    url : url,
+		    data : {data: datos, accion: "registrar_participantes"},
+		    type : 'POST',
+		    dataType : 'json',
+		    success : function(respuesta, status, req) {
+		    	if(respuesta.status == 200){
+					$("#form_register_express")[0].reset();
+					imprimir_gafete(datos);
+	    		$(location).attr('href', url_gracias);
+				}else {
+					$("#form_register")[0].reset();
+					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
+				}
+		    },
+		    error : function(respuesta, status, req) {
+		    	console.log(status, respuesta, req);
+		    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+		    }
+		});
+	  }
+  });
+
+
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm").validate(
 		 {
@@ -164,13 +239,6 @@ $("#form_register").validate({
 												 alert("Ha ocurrido un error interno. Por favor comuniquese con el administrador del sistema");
 												 return false;
 											 }else{
-											 	imprimir_gafete(result);
-												 $.ajax({
-													 url : "../controller/controller.php",
-													 data : {email: $("#correo").val(), accion: "actualizar_asistencia"},
-													 type : "POST",
-													 dataType: "json",
-													 success : function(result) {
 
 														 $("#imagen_header").hide();
 														 $("#imagen_header_registro").hide();
@@ -187,6 +255,8 @@ $("#form_register").validate({
 															$("#buscar").hide();
 															$("#regresar").hide();
 															$("#regisDatos").hide();
+
+															imprimir_gafete(result);
 
 															$("#continuar").on("click", function(){
 																//imagen header
@@ -210,8 +280,6 @@ $("#form_register").validate({
 																$("#regresar").hide();
 																$("#regisDatos").hide();
 															});
-													 }
-												 })
 
 											 }
 

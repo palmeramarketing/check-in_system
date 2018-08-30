@@ -11,6 +11,7 @@ class PDF_generator
 		$html = str_replace("@name", $datos["data"]["nombre"], $datos["data"]["data_html"]);
 		$email= $datos["data"][0]["email"];
 		$mpdf = new Mpdf();
+        $mpdf->AddPage('L');
 		$mpdf->WriteHTML($html);
 		$pdf= $mpdf->Output('', 'S');
 
