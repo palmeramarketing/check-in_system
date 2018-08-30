@@ -303,7 +303,7 @@ class Modelo
 		</body>
 		</html>'
 		);
-		$mail->AltBody = 'Agracias por Actualizar sus datos.';
+		$mail->AltBody = 'Gracias por Actualizar sus datos.';
 		$mail->send();
 	}
 
@@ -947,7 +947,7 @@ class Modelo
 		</body>
 		</html>'
 		);
-		$mail->AltBody = 'Agracias por Actualizar sus datos.';
+		$mail->AltBody = 'Gracias por Actualizar sus datos.';
 		$mail->send();
 	}
 	function envioCorreoAsistencia($email) {
@@ -977,7 +977,7 @@ class Modelo
 		</body>
 		</html>'
 		);
-		$mail->AltBody = 'Agracias por Asistir a nuetro evento.';
+		$mail->AltBody = 'Gracias por Asistir a nuetro evento.';
 		$mail->send();
 	}
 }
