@@ -9,8 +9,9 @@ class PDF_generator
 
 	function imprimir_pdf($datos){
 		$html = str_replace("@name", $datos["data"]["nombre"], $datos["data"]["data_html"]);
-		$email= $datos["data"]["email"];
+		$email= $datos["data"][0]["email"];
 		$mpdf = new Mpdf();
+        $mpdf->AddPage('L');
 		$mpdf->WriteHTML($html);
 		$pdf= $mpdf->Output('', 'S');
 
