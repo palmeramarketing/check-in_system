@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../db/conexion.php');
   require_once('../model/modelo.php');
   $obj_u  = new Modelo();
@@ -12,10 +12,10 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>CHECK-IN</title>
-			<meta content="http://mundialcw.com/images/cropped-favicon-270x270.png" name="msapplication-TileImage">
-			<link href="http://mundialcw.com/images/cropped-favicon-32x32.png" rel="icon" sizes="32x32">
-			<link href="http://mundialcw.com/images/cropped-favicon-192x192.png" rel="icon" sizes="192x192">
-			<link href="http://mundialcw.com/images/cropped-favicon-180x180.png" rel="apple-touch-icon-precomposed">
+			<meta content="../assets/images/menarini_icon.jpg" name="msapplication-TileImage">
+			<link href="../assets/images/menarini_icon.jpg" rel="icon" sizes="32x32">
+			<link href="../assets/images/menarini_icon.jpg" rel="icon" sizes="192x192">
+			<link href="../assets/images/menarini_icon.jpg" rel="apple-touch-icon-precomposed">
 			<!-- Bootstrap y CSS -->
 			<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 			<link href="../assets/css/fonts.css" rel="stylesheet">
@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
 					<div id="imagen_header_logo" class="centrar">
-						<img src="../assets/images/logo_header.png" alt="">
+						<img src="../assets/images/menarini_icon.jpg" alt="">
 					</div>
 				</div>
 			</div>
@@ -194,7 +194,7 @@
 
 
 
-			<div class="row content-footer" id="row_footer">
+			<!--<div class="row content-footer" id="row_footer">
 				<div>
 					<div class="col-xs-12 col-sm-3 col-md-3">
 						<img src="../assets/images/logo_footer.png" class="img-responsive logo-header">
@@ -221,7 +221,7 @@
 							</div>
 						</div>
 				 </div>
-			 </div>
+			 </div>-->
 		 </div>
 
     </div>
@@ -232,5 +232,6 @@
    </body>
 	 <!-- JS -->
 	 <script src="../assets/js/validate.js"></script>
+	  <script src="../assets/js/registro_usuario.js"></script>
 
 </html>
