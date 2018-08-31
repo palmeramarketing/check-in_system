@@ -1,4 +1,4 @@
-$('#tabla_lista_usuario').DataTable();
+
 
 $("#nuevo_user").click(function(){
 	if ($(this).hasClass("active")) {
@@ -161,8 +161,6 @@ $("#form_register_express").validate({
 	  }
   });
 
-
-
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm").validate(
 		 {
@@ -237,6 +235,7 @@ $("#form_register_express").validate({
 												 alert("Ha ocurrido un error interno. Por favor comuniquese con el administrador del sistema");
 												 return false;
 											 }else{
+
 														 $("#imagen_header").hide();
 														 $("#imagen_header_registro").hide();
 														 $("#imagen_header_bienvenido").show();
@@ -254,6 +253,7 @@ $("#form_register_express").validate({
 															$("#regisDatos").hide();
 
 															imprimir_gafete(result);
+
 															$("#continuar").on("click", function(){
 
 																//imagen header
