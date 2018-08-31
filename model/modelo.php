@@ -49,8 +49,8 @@ class Modelo
 	}
 
 	function registrar_participante_sistema_eventos($datos, $conexion){
-		$sql = "INSERT INTO participante (email,nombre,apellido,direccion,telefono,estatus)
-				VALUES ('".$datos["email"]."','".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["direccion"]."','".$datos["telefono"]."','1')";
+		$sql = "INSERT INTO participante (email,nombre,apellido,direccion,telefono,estatus, asistencia)
+				VALUES ('".$datos["email"]."','".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["direccion"]."','".$datos["telefono"]."','1', '".$datos["asistencia"]."')";
 		$resp = $conexion->sql_insert_update($sql,true);
 		if ($resp["status"] == 1062) {
 			return self::update_participante_sistema_eventos($datos, $conexion);
@@ -63,7 +63,7 @@ class Modelo
 	}
 
 	function update_participante_sistema_eventos($datos, $conexion){
-		$sql = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido = '".$datos["apellido_1"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
+		$sql = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido = '".$datos["apellido_1"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."', asistencia = '".$datos["asistencia"]."' WHERE email = '".$datos["email"]."'";
 		return $conexion->sql_insert_update($sql,true);
 	}
 
@@ -79,12 +79,12 @@ class Modelo
 		$conexion = new Recursos();
 		$sql= "SELECT * FROM participantes WHERE email='$email'";
 		$ejecutar= $conexion->sql_select($sql);
-		
+
 		if ($ejecutar["status"] == 200) {
-			
+			self::update_participante_asistencia_eventos($email, $conexion);
 			$sqlupdate= "UPDATE participantes SET asistencia='Con asistencia' WHERE email='$email'";
 			$ejecutarupdate= $conexion->sql_insert_update($sqlupdate);
-			
+
 			if($ejecutarupdate["status"] == 200){
 				self::envioCorreoAsistencia($email);
 				return $ejecutar["data"];
@@ -96,6 +96,10 @@ class Modelo
 		}
 	}
 
+	function update_participante_asistencia_eventos($email, $conexion){
+		$sql = "UPDATE participante SET asistencia = 'Con asistencia' WHERE email = '$email'";
+		return $conexion->sql_insert_update($sql,true);
+	}
 	function imprimir_certificado($datos, $imprimir = false){
 		$conexion = new Recursos();
 		$id_evento= $datos["id_evento"];
@@ -123,7 +127,7 @@ class Modelo
 
 	function imprimir_gafete($email){
 		$pdf = new PDF_generator();
-		$pdf->imprimir_gafete($email);	
+		$pdf->imprimir_gafete($email);
 	}
 
 	function guardar_certificado($data, $archivo){
@@ -273,12 +277,12 @@ class Modelo
 					    		<img src="http://palmera.marketing/check-in_system/assets/images/C&W_Landing_FB.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;">MenariniCA</span>
 					    	</a>
-				    				
+
 				    		<a href="https://twitter.com/menarinica?lang=es" target="_blank" style=" text-decoration: none; color: white; margin: 2%;">
 					    		<img src="http://palmera.marketing/check-in_system/assets/images/C&W_Landing_TW.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;">@MenariniCA</span>
 					    	</a>
-				    			
+
 				    		<a href="https://www.youtube.com/user/MenariniCA" target="_blank" style=" text-decoration: none; color: white; margin: 2%;">
 					    		<img src="http://palmera.marketing/check-in_system/assets/images/C&W_Landing_YT.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;" >MenariniCA</span>
@@ -288,7 +292,7 @@ class Modelo
 					    		<img src="http://palmera.marketing/check-in_system/assets/images/logo_linkedin.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;">grupomenarini_ca</span>
 					    	</a>
-				    		
+
 				    	</td>
 					</tr>
 					<tr>
@@ -303,7 +307,7 @@ class Modelo
 		$mail->AltBody = 'Gracias por Actualizar sus datos.';
 		$mail->send();
 	}
-	
+
 	function envioCorreoAsistencia($email) {
 	  	$mail = new PHPMailer;
 		$mail->setFrom('info@cwc.com', 'MENARINI');
@@ -323,7 +327,7 @@ class Modelo
 					<tr>
 						<td align="center">
 							<p style="font-size: 30pt; color: #2d4c72; padding: 20px;">Gracias por asistir a nuestro evento</p>
-						
+
 						</td>
 					</tr>
 				</tbody>
