@@ -161,7 +161,6 @@ $("#form_register_express").validate({
 	  }
   });
 
-
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm").validate(
 		 {
@@ -200,7 +199,6 @@ $("#form_register_express").validate({
 												 $("#regresar").show();
 												 $("#regisDatos").show();
 
-
 												 $("#regresar").on("click", function(){
 													 //imagen header
 													 $("#imagen_header").show();
@@ -232,8 +230,6 @@ $("#form_register_express").validate({
 
 													 $("#formBusqueda").hide();
 													 $("#formRegistro").show();
-
-
 												 });
 											 }else if(result == 500){
 												 alert("Ha ocurrido un error interno. Por favor comuniquese con el administrador del sistema");
@@ -259,6 +255,7 @@ $("#form_register_express").validate({
 															imprimir_gafete(result);
 
 															$("#continuar").on("click", function(){
+
 																//imagen header
 																$("#imagen_header").show();
 																$("#imagen_header_bienvenido").hide();
@@ -282,13 +279,9 @@ $("#form_register_express").validate({
 															});
 
 											 }
-
-												// console.log(result.apellido); return false;
 										}
 									})
-
 						}
-
 		 })
 
 			function imprimir_gafete(result){
@@ -344,6 +337,7 @@ $("#form_register_express").validate({
 			$("#formRegistro").hide();
 		 });
 
+
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm-login").validate(
 		 {
@@ -356,7 +350,6 @@ $("#form_register_express").validate({
 								correo:{}
 						},
 						submitHandler: function(form) {
-
 									$.ajax({
 										url : "../controller/controller.php",
 										data : {correo: $("#correo").val(), clave: $("#clave").val(), accion: "login"},
@@ -378,20 +371,14 @@ $("#form_register_express").validate({
 											}
 										}
 									})
-
 						}
-
 		 })
 
-
 		 $("#olvido_passw").on("click", function(){
-
 				$("#div_login").hide();
 				$("#div_recperar").show();
 				$("#div_cambiar_passwd").hide();
-
 		 })
-
 		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	 	$("#frm-recuperar").validate(
 	 		 {
@@ -402,7 +389,6 @@ $("#form_register_express").validate({
 	 								correo:{},
 	 						},
 	 						submitHandler: function(form) {
-
 	 									$.ajax({
 	 										url : "../controller/controller.php",
 	 										data : {correo: $("#correo_rec").val(), accion: "recuperar_password"},
@@ -421,9 +407,7 @@ $("#form_register_express").validate({
 	 											}
 	 										}
 	 									})
-
 	 						}
-
 	 		 })
 
 		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
@@ -438,12 +422,10 @@ $("#form_register_express").validate({
 	 								password2:{},
 	 						},
 	 						submitHandler: function(form) {
-
 									if($("#password1").val() != $("#password2").val()){
 											alert("Verfique que los passwords ingresados coincidan");
 											return false;
 									}
-
 	 									$.ajax({
 	 										url : "../controller/controller.php",
 	 										data : {correo: $("#correo").val(), passwd: $("#password1").val(), accion: "cambiar_password"},
@@ -460,11 +442,8 @@ $("#form_register_express").validate({
 	 											}
 	 										}
 	 									})
-
 	 						}
-
 	 		 })
-
 
 			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 		 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
@@ -505,7 +484,16 @@ $("#form_register_express").validate({
 				}
 			});
 
-			
+			var table= $('#tabla_lista_usuario').DataTable();
+			$('#tabla_lista_usuario tbody').on("click", ".accion_modificar", function(){
+				var data = table.row($(this).parents("tr")).data();
+
+				$("#mod_id").val(data[0]);
+				$("#mod_usuario").val(data[1]);
+				$("#mod_email").val(data[2]);
+				$("#mod_tipo").val((data[3]== "Administrador")? "admin" : "superadmin");
+				$("#mod_estatus").val((data[4]== "Activo")? 1: 0);
+			});
 
 			// ACCION MODIFICAR USUARIO-------------------
 			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
@@ -526,7 +514,6 @@ $("#form_register_express").validate({
 						perfil:$("#mod_tipo").val(),
 						estatus:$("#mod_estatus").val()
 					};
-
 					$.ajax({
 					    url : '../controller/controller.php',
 					    data : datos,
@@ -565,7 +552,7 @@ $("#form_register_express").validate({
 							id:data[0]
 						}
 						$.ajax({
-						    url : '../controller/controller.php',
+					    	url : '../controller/controller.php',
 						    data : datos,
 						    type : 'POST',
 						    dataType : 'json',
@@ -599,6 +586,7 @@ function alert_message(strong, span, tipo){
 			$(".mensaje-div").slideUp();
 		}, 2500);
 }
+
 function doKey(event){
   var key = event.which || event.keyCode;
   if ((key < 48 || key > 57) && (key != 43) && (key != 32) && (key != 8)){
