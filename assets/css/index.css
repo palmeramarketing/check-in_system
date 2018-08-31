@@ -253,9 +253,10 @@ span,p{
     text-align: center;
 }
 #div_checkbox_terminos{
-	max-width: 400px;
-	text-align: center;
-	margin: 18px auto 0px auto;
+	 /* max-width: 400px; */
+    text-align: center;
+    /* margin: 18px auto 0px auto; */
+    margin-top: 25px;
 }
 #terminos{
 	margin-right: 7px;
