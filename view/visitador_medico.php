@@ -90,7 +90,7 @@ session_start();
 								<input class="form-control input-form" type="text" tabindex="8" placeholder="CIUDAD:" name="ciudad" id="ciudad" />
 							</div>
 						</div>
-				         <div class="row centrar-contenido">
+				        <div class="row centrar-contenido">
 							<div class="col-xs-4">
 								<input class="form-control input-form" type="text" tabindex="9" placeholder="PAÍS:" name="pais" id="pais" />
 							</div>
@@ -98,10 +98,14 @@ session_start();
 								<input class="form-control input-form" type="text" tabindex="10" placeholder="DIRECCIÓN:" name="direccion" id="direccion" />
 							</div>
 						</div>
-				            <input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
-					        <div id="div_checkbox_terminos">
-				              	<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="12" class="ui-corner-all"><span id="span_terminos">*Acepto las políticas de manejo de datos</span>
-				            </div>
+						<div class="row centrar-contenido">
+							<div class="col-xs-4">
+								<input class="form-control input-form" type="text" tabindex="11" placeholder="TELÉFONO:" name="telefono" id="telefono" onkeypress="doKey(arguments[0] || window.event)" maxlength="13" />
+							</div>
+							<div class="col-xs-4" id="div_checkbox_terminos">
+								<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="12" class="ui-corner-all"><span id="span_terminos">*Acepto las políticas de manejo de datos</span>
+							</div>
+						</div>
 							<input type="hidden" name="url" id="url" value="../controller/controller.php">
 							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
 							<input type="hidden" value="45" name="id_evento" id="id_evento">
