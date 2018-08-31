@@ -87,6 +87,82 @@ $("#form_register").validate({
 	  }
   });
 
+$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
+$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+$("#form_register_express").validate({
+	rules:{
+	  nombre:{required:!0,minlength:2},
+	  apellido_1:{required:!0,minlength:2},
+	  apellido_2:{required:!0,minlength:2},
+	  especialidad:{required:!0,minlength:2},
+	  colegiado:{required:!0,minlength:2},
+	  celular:{required:!0,minlength:2},
+	  email:{required:!0,betterEmail:!0},
+	  ciudad:{required:!0,minlength:2},
+	  pais:{required:!0,minlength:2},
+	  direccion:{required:!0,minlength:7},
+	  telefono:{required:!0,minlength:2},
+	  terminos:{required:!0}
+	},
+	messages:{
+	  nombre:{},
+	  apellido_1:{},
+	  apellido_2:{},
+	  especialidad:{},
+	  colegiado:{},
+	  celular:{},
+	  email:{},
+	  ciudad:{},
+	  pais:{},
+	  direccion:{},
+	  telefono:{},
+	  terminos:{}
+	},
+	submitHandler: function() {
+		var datos = {
+			nombre : $("#nombre").val(),
+			apellido_1 : $("#apellido_1").val(),
+			apellido_2 : $("#apellido_2").val(),
+			especialidad : $("#especialidad").val(),
+			colegiado : $("#colegiado").val(),
+			celular : $("#celular").val(),
+			email : $("#email").val(),
+			ciudad : $("#ciudad").val(),
+			pais : $("#pais").val(),
+			direccion : $("#direccion").val(),
+			telefono : $("#telefono").val(),
+			id_evento : $("#id_evento").val(),
+			asistencia : $("#asistencia").val(),
+			id_usuario : $("#login_id").val()
+		};
+
+		var url= $("#url").val();
+		var url_gracias= $("#url_gracias").val();
+		$.ajax({
+		    url : url,
+		    data : {data: datos, accion: "registrar_participantes"},
+		    type : 'POST',
+		    dataType : 'json',
+		    success : function(respuesta, status, req) {
+		    	if(respuesta.status == 200){
+					$("#form_register_express")[0].reset();
+					imprimir_gafete(datos);
+	    		$(location).attr('href', url_gracias);
+				}else {
+					$("#form_register")[0].reset();
+					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
+				}
+		    },
+		    error : function(respuesta, status, req) {
+		    	console.log(status, respuesta, req);
+		    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+		    }
+		});
+	  }
+  });
+
+
+
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm").validate(
 		 {
@@ -125,7 +201,6 @@ $("#form_register").validate({
 												 $("#regresar").show();
 												 $("#regisDatos").show();
 
-
 												 $("#regresar").on("click", function(){
 													 //imagen header
 													 $("#imagen_header").show();
@@ -157,21 +232,11 @@ $("#form_register").validate({
 
 													 $("#formBusqueda").hide();
 													 $("#formRegistro").show();
-
-
 												 });
 											 }else if(result == 500){
 												 alert("Ha ocurrido un error interno. Por favor comuniquese con el administrador del sistema");
 												 return false;
 											 }else{
-
-												 $.ajax({
-													 url : "../controller/controller.php",
-													 data : {email: $("#correo").val(), accion: "actualizar_asistencia"},
-													 type : "POST",
-													 dataType: "json",
-													 success : function(result) {
-
 														 $("#imagen_header").hide();
 														 $("#imagen_header_registro").hide();
 														 $("#imagen_header_bienvenido").show();
@@ -188,7 +253,9 @@ $("#form_register").validate({
 															$("#regresar").hide();
 															$("#regisDatos").hide();
 
+															imprimir_gafete(result);
 															$("#continuar").on("click", function(){
+
 																//imagen header
 																$("#imagen_header").show();
 																$("#imagen_header_bienvenido").hide();
@@ -210,18 +277,40 @@ $("#form_register").validate({
 																$("#regresar").hide();
 																$("#regisDatos").hide();
 															});
-													 }
-												 })
 
 											 }
-
-												// console.log(result.apellido); return false;
 										}
 									})
-
 						}
-
 		 })
+
+			function imprimir_gafete(result){
+				$("#nombre_participante").css("display","block").text(result["nombre"]+" "+result["apellido_1"]);
+				var element = $("#nombre_participante");
+			  html2canvas(element, {
+			    onrendered: function (canvas) {
+			      getCanvas = canvas;
+			    	var img = canvas.toDataURL("image/png",1.0);
+			    	$("#div_img_gafete").css("display","block").html("<img id='Image' src=" + img + " style='width:100%;'></img>").ready(function(){
+				    	var htmlToPrint = '' +
+			        '<style type="text/css">' +
+						    '@media print {'+
+							  '@page { margin: 0; }'+
+							'}'+
+			        '</style>';
+			        htmlToPrint += $("#div_img_gafete").html();
+			        var tWindow = window.open("");
+			        $(tWindow.document.body)
+			          .html(htmlToPrint)
+			          tWindow.focus();
+			          tWindow.print();
+			          tWindow.close();
+			    	$("#div_img_gafete").css("display","none");
+			    	$("#nombre_participante").css("display","none");
+			    	});
+			    }
+			  });
+			}
 
 		 $("#volver").on("click", function(){
 		 	//imagen header
@@ -248,6 +337,7 @@ $("#form_register").validate({
 			$("#formRegistro").hide();
 		 });
 
+
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	$("#frm-login").validate(
 		 {
@@ -260,7 +350,6 @@ $("#form_register").validate({
 								correo:{}
 						},
 						submitHandler: function(form) {
-
 									$.ajax({
 										url : "../controller/controller.php",
 										data : {correo: $("#correo").val(), clave: $("#clave").val(), accion: "login"},
@@ -282,20 +371,14 @@ $("#form_register").validate({
 											}
 										}
 									})
-
 						}
-
 		 })
 
-
 		 $("#olvido_passw").on("click", function(){
-
 				$("#div_login").hide();
 				$("#div_recperar").show();
 				$("#div_cambiar_passwd").hide();
-
 		 })
-
 		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 	 	$("#frm-recuperar").validate(
 	 		 {
@@ -306,7 +389,6 @@ $("#form_register").validate({
 	 								correo:{},
 	 						},
 	 						submitHandler: function(form) {
-
 	 									$.ajax({
 	 										url : "../controller/controller.php",
 	 										data : {correo: $("#correo_rec").val(), accion: "recuperar_password"},
@@ -325,9 +407,7 @@ $("#form_register").validate({
 	 											}
 	 										}
 	 									})
-
 	 						}
-
 	 		 })
 
 		 $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
@@ -342,12 +422,10 @@ $("#form_register").validate({
 	 								password2:{},
 	 						},
 	 						submitHandler: function(form) {
-
 									if($("#password1").val() != $("#password2").val()){
 											alert("Verfique que los passwords ingresados coincidan");
 											return false;
 									}
-
 	 									$.ajax({
 	 										url : "../controller/controller.php",
 	 										data : {correo: $("#correo").val(), passwd: $("#password1").val(), accion: "cambiar_password"},
@@ -364,11 +442,8 @@ $("#form_register").validate({
 	 											}
 	 										}
 	 									})
-
 	 						}
-
 	 		 })
-
 
 			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 		 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
@@ -410,7 +485,6 @@ $("#form_register").validate({
 			});
 
 			var table= $('#tabla_lista_usuario').DataTable();
-
 			$('#tabla_lista_usuario tbody').on("click", ".accion_modificar", function(){
 				var data = table.row($(this).parents("tr")).data();
 
@@ -440,7 +514,6 @@ $("#form_register").validate({
 						perfil:$("#mod_tipo").val(),
 						estatus:$("#mod_estatus").val()
 					};
-
 					$.ajax({
 					    url : '../controller/controller.php',
 					    data : datos,
@@ -479,7 +552,7 @@ $("#form_register").validate({
 							id:data[0]
 						}
 						$.ajax({
-						    url : '../controller/controller.php',
+					    	url : '../controller/controller.php',
 						    data : datos,
 						    type : 'POST',
 						    dataType : 'json',
@@ -513,6 +586,7 @@ function alert_message(strong, span, tipo){
 			$(".mensaje-div").slideUp();
 		}, 2500);
 }
+
 function doKey(event){
   var key = event.which || event.keyCode;
   if ((key < 48 || key > 57) && (key != 43) && (key != 32) && (key != 8)){
