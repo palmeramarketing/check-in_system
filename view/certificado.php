@@ -44,11 +44,24 @@
 
 		</div>
 
+
+
+
 		<div class="row" id="formBusqueda"  >
 
       <div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
-
 				<div id="div_contenedor_formulario">
+
+					<?php if (isset($_REQUEST["error"])){		?>
+						<div class="col-md-10 col-md-offset-1">
+							<div class="mensaje-div alert alert-danger">
+								<strong class="mensaje-strong">Error! </strong><span class="mensaje-span">El codigo o correo no existe.</span>
+							</div>
+						</div>
+						<div class="col-md-10 col-md-offset-1">
+							<a href="certificado.php">Volver</a>
+						</div>
+					<?php } else {?>
 
 					<div id="div_parrafo_superior_formulario" class="centrar">
 
@@ -68,6 +81,7 @@
 
             <input type="hidden" name="accion" value="imprimir_certificado">
 
+
 						<div class="center-button">
 
             	<input type="submit" id="enviar_cod_part" value="Imprimir Certificado" class="btn button-form">
@@ -76,12 +90,12 @@
 
           </form>
 
+				<?php }?>
         </div>
 
       </div>
 
     </div>
-
 	</div>
 
 	<script type="text/javascript" src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
@@ -91,4 +105,3 @@
 </body>
 
 </html>
-
